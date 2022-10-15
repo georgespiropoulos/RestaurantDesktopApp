@@ -9,27 +9,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane id="loginPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="944.0" prefWidth="1440.0" style="-fx-background-color: #323232;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="loginPage" fx:id="loginPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="944.0" prefWidth="1440.0" style="-fx-background-color: #323232;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="120.0" fitWidth="302.0" layoutX="569.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Images/uncleHenrys.png" />
          </image>
       </ImageView>
-      <TextField id="usernameTextbox" layoutX="569.0" layoutY="421.0" prefHeight="29.0" prefWidth="302.0" />
-      <Text id="usernameText" fill="WHITE" layoutX="569.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="216.7825469970703">
+      <TextField id="usernameTextbox" fx:id="usernameTextbox" layoutX="569.0" layoutY="421.0" prefHeight="29.0" prefWidth="302.0" />
+      <Text id="usernameText" fx:id="usernameText" fill="WHITE" layoutX="569.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="216.7825469970703">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField id="passwordTextbox" layoutX="569.0" layoutY="494.0" prefHeight="29.0" prefWidth="302.0" />
-      <Text id="passwordText" fill="WHITE" layoutX="569.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="216.7825469970703">
+      <TextField id="passwordTextbox" fx:id="passwordTextbox" layoutX="569.0" layoutY="494.0" prefHeight="29.0" prefWidth="302.0" />
+      <Text id="passwordText" fx:id="passwordText" fill="WHITE" layoutX="569.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="216.7825469970703">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Button id="loginButton" layoutX="626.0" layoutY="558.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="189.0" style="-fx-background-color: #839B97; -fx-font-size: 24;" text="LOGIN" />
-      <Label id="wrongPassUser" alignment="CENTER" layoutX="576.0" layoutY="642.0" prefHeight="25.0" prefWidth="284.0" text="Wrong username or password." textAlignment="CENTER" textFill="#fc0000">
+      <Button id="loginButton" fx:id="loginButton" layoutX="626.0" layoutY="558.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="189.0" style="-fx-background-color: #839B97; -fx-font-size: 24;" text="LOGIN" />
+      <Label id="wrongPassUser" fx:id="wrongPassUser" alignment="CENTER" layoutX="576.0" layoutY="642.0" prefHeight="25.0" prefWidth="284.0" text="Wrong username or password." textAlignment="CENTER" textFill="#fc0000">
          <font>
             <Font size="16.0" />
          </font>
