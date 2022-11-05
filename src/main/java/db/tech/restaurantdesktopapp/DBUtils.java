@@ -38,28 +38,4 @@ public class DBUtils {
             throw e;
         }
     }
-
-    public static ResultSet dbExecuteQueryUserList() throws ClassNotFoundException, SQLException {
-        Statement stmt = null;
-        ResultSet resultSet = null;
-        CachedRowSetImpl crs = null;
-        try {
-            dbConnect();
-            System.out.println("Select statement: users \n");
-            stmt = conn.createStatement();
-            resultSet = stmt.executeQuery("SELECT id,name,surname from employees");
-            crs = new CachedRowSetImpl();
-            crs.populate(resultSet);
-        } catch (SQLException e) {
-            System.out.println("Problem occured at executeQuery operation: " + e);
-            throw e;
-        } finally {
-            if (resultSet != null)
-                resultSet.close();
-            if (stmt != null)
-                stmt.close();
-            dbDisconnect();
-        }
-        return crs;
-    }
 }
