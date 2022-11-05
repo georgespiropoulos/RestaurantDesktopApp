@@ -9,6 +9,10 @@ public class DBUtils {
     private static String username = "it144354";
     private static String passwd = "Technologia_Vaseon_2022";
 
+    private static Statement statement = null;
+
+    private static ResultSet rs;
+
     public static void dbConnect() throws SQLException, ClassNotFoundException {
         try {
             Class.forName(driverClassName);
@@ -34,6 +38,38 @@ public class DBUtils {
             if (conn != null && !conn.isClosed())
                 conn.close();
         } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public static String checkPass(String username) throws Exception{
+        try{
+            dbConnect();
+            String pass = null;
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT CHECKPASS('"+username+"') as pass");
+            while (rs.next()){
+                pass = rs.getString("pass");
+            }
+            dbDisconnect();
+            return pass;
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    public static boolean checkAdmin(String username) throws Exception{
+        try{
+            dbConnect();
+            Boolean admin = false;
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT CHECKADMIN('"+username+"') as administrator");
+            while (rs.next()){
+                admin = rs.getBoolean("administrator");
+            }
+            dbDisconnect();
+            return admin;
+        }catch (Exception e){
             throw e;
         }
     }
