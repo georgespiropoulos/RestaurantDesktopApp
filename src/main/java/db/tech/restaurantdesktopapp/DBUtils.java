@@ -1,6 +1,5 @@
 package db.tech.restaurantdesktopapp;
 
-import com.sun.rowset.CachedRowSetImpl;
 import java.sql.*;
 
 public class DBUtils {
