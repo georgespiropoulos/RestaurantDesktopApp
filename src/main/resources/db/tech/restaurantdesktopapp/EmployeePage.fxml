@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="944.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="1440.0" style="-fx-background-color: #676767;">
+         <children>
+            <ImageView fitHeight="125.0" fitWidth="285.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/uncleHenrys.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" layoutX="976.0" layoutY="66.0" prefHeight="47.0" prefWidth="160.0">
+               <children>
+                  <Label id="dayTxt" fx:id="day" styleClass="date" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label id="dateTxt" fx:id="date" styleClass="date" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Label id="timeTxt" fx:id="time" alignment="CENTER" layoutX="1195.0" layoutY="78.0" prefHeight="47.0" prefWidth="160.0" styleClass="time" text="Time" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="350.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login as:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Label id="loginTypeEmployee" fx:id="loginTypeEmployee" layoutX="450.0" layoutY="83.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="199.0" prefHeight="745.0" prefWidth="285.0" style="-fx-background-color: #676767;">
+         <children>
+            <Button id="profileMenuEmployee" fx:id="profileMenuE" layoutX="4.0" layoutY="41.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Profile" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button id="ordersMenuEmployee" fx:id="ordersMenuE" layoutX="4.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Orders" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button id="mainMenuEmployee" fx:id="mainMenuE" layoutX="4.0" layoutY="155.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Menu" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button id="tablesMenuEmployee" fx:id="tablesMenuE" layoutX="4.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Tables" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button id="logoutAdmin" fx:id="logoutAdmin" layoutX="4.0" layoutY="655.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Logout" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="283.0" layoutY="199.0" prefHeight="745.0" prefWidth="1158.0" />
+   </children>
+</Pane>
