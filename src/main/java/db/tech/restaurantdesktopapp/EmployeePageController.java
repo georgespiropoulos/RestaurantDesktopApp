@@ -58,6 +58,50 @@ public class EmployeePageController implements Initializable {
     @FXML
     private Button tablesMenuE;
 
+    public void onClickProfile(){
+        profilePane.setVisible(true);
+        profilePane.setDisable(false);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+    }
+
+    public void onClickOrders(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        ordersPane.setVisible(true);
+        ordersPane.setDisable(false);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+    }
+
+    public void onClickMenu(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(true);
+        menuPane.setDisable(false);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+    }
+
+    public void onClickTables(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(true);
+        tablesPane.setDisable(false);
+    }
+
     public void onClickLogout(){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("uncleHenrysLogin.fxml"));

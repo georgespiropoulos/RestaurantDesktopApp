@@ -52,22 +52,22 @@
       </Pane>
       <Pane layoutY="199.0" prefHeight="745.0" prefWidth="285.0" style="-fx-background-color: #676767;">
          <children>
-            <Button id="profileMenuEmployee" fx:id="profileMenuE" layoutX="4.0" layoutY="41.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Profile" textFill="WHITE">
+            <Button id="profileMenuEmployee" fx:id="profileMenuE" layoutX="4.0" layoutY="41.0" mnemonicParsing="false" onAction="#onClickProfile" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Profile" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="ordersMenuEmployee" fx:id="ordersMenuE" layoutX="4.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Orders" textFill="WHITE">
+            <Button id="ordersMenuEmployee" fx:id="ordersMenuE" layoutX="4.0" layoutY="98.0" mnemonicParsing="false" onAction="#onClickOrders" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Orders" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="mainMenuEmployee" fx:id="mainMenuE" layoutX="4.0" layoutY="155.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Menu" textFill="WHITE">
+            <Button id="mainMenuEmployee" fx:id="mainMenuE" layoutX="4.0" layoutY="155.0" mnemonicParsing="false" onAction="#onClickMenu" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Menu" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="tablesMenuEmployee" fx:id="tablesMenuE" layoutX="4.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Tables" textFill="WHITE">
+            <Button id="tablesMenuEmployee" fx:id="tablesMenuE" layoutX="4.0" layoutY="212.0" mnemonicParsing="false" onAction="#onClickTables" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Tables" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -83,10 +83,23 @@
          <children>
             <StackPane layoutX="1.0" layoutY="1.0" prefHeight="745.0" prefWidth="1158.0">
                <children>
-                  <Pane fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" />
-                  <Pane fx:id="ordersPane" prefHeight="200.0" prefWidth="200.0" />
-                  <Pane fx:id="menuPane" prefHeight="200.0" prefWidth="200.0" />
-                  <Pane fx:id="tablesPane" prefHeight="200.0" prefWidth="200.0" />
+                  <Pane fx:id="profilePane" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Profile" />
+                     </children></Pane>
+                  <Pane fx:id="ordersPane" disable="true" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label text="Orders" />
+                     </children></Pane>
+                  <Pane fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label text="Menu" />
+                     </children></Pane>
+                  <Pane fx:id="tablesPane" disable="true" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label layoutX="2.0" text="Tables" />
+                     </children>
+                  </Pane>
                </children>
             </StackPane>
          </children></Pane>
