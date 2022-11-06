@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.time.LocalDateTime;
@@ -32,6 +33,30 @@ public class EmployeePageController implements Initializable {
 
     @FXML
     private Button logoutAdmin;
+
+    @FXML
+    private Pane profilePane;
+
+    @FXML
+    private Pane ordersPane;
+
+    @FXML
+    private Pane menuPane;
+
+    @FXML
+    private Pane tablesPane;
+
+    @FXML
+    private Button profileMenuE;
+
+    @FXML
+    private Button ordersMenuE;
+
+    @FXML
+    private Button mainMenuE;
+
+    @FXML
+    private Button tablesMenuE;
 
     public void onClickLogout(){
         try {

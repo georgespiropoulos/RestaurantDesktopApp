@@ -17,14 +17,8 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Rectangle;
 
 public class AdminPageController implements Initializable{
 
@@ -39,6 +33,45 @@ public class AdminPageController implements Initializable{
 
     @FXML
     private Button logoutAdmin;
+
+    @FXML
+    private Pane profilePane;
+
+    @FXML
+    private Pane employeesPane;
+
+    @FXML
+    private Pane ordersPane;
+
+    @FXML
+    private Pane menuPane;
+
+    @FXML
+    private Pane tablesPane;
+
+    @FXML
+    private Pane reservationsPane;
+
+    @FXML
+    private Button profileMenuA;
+
+    @FXML
+    private Button employeesMenuA;
+
+    @FXML
+    private Button ordersMenuA;
+
+    @FXML
+    private Button mainMenuA;
+
+    @FXML
+    private Button tablesMenuA;
+
+    @FXML
+    private Button reservationsMenuAdmin;
+
+
+    @FXML
 
     public void onClickLogout(){
         try {
