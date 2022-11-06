@@ -52,26 +52,96 @@ public class AdminPageController implements Initializable{
     @FXML
     private Pane reservationsPane;
 
-    @FXML
-    private Button profileMenuA;
+    public void onClickProfile(){
+        profilePane.setVisible(true);
+        profilePane.setDisable(false);
+        employeesPane.setVisible(false);
+        employeesPane.setDisable(true);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+        reservationsPane.setVisible(false);
+        reservationsPane.setDisable(true);
+    }
 
-    @FXML
-    private Button employeesMenuA;
+    public void onClickEmployees(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        employeesPane.setVisible(true);
+        employeesPane.setDisable(false);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+        reservationsPane.setVisible(false);
+        reservationsPane.setDisable(true);
+    }
 
-    @FXML
-    private Button ordersMenuA;
+    public void onClickOrders(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        employeesPane.setVisible(false);
+        employeesPane.setDisable(true);
+        ordersPane.setVisible(true);
+        ordersPane.setDisable(false);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+        reservationsPane.setVisible(false);
+        reservationsPane.setDisable(true);
+    }
 
-    @FXML
-    private Button mainMenuA;
+    public void onClickMenu(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        employeesPane.setVisible(false);
+        employeesPane.setDisable(true);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(true);
+        menuPane.setDisable(false);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+        reservationsPane.setVisible(false);
+        reservationsPane.setDisable(true);
+    }
 
-    @FXML
-    private Button tablesMenuA;
+    public void onClickTables(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        employeesPane.setVisible(false);
+        employeesPane.setDisable(true);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(true);
+        tablesPane.setDisable(false);
+        reservationsPane.setVisible(false);
+        reservationsPane.setDisable(true);
+    }
 
-    @FXML
-    private Button reservationsMenuAdmin;
+    public void onClickReservations(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        employeesPane.setVisible(false);
+        employeesPane.setDisable(true);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+        reservationsPane.setVisible(true);
+        reservationsPane.setDisable(false);
+    }
 
-
-    @FXML
 
     public void onClickLogout(){
         try {
