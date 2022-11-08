@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -216,8 +217,6 @@
                               <Image url="@../../../Images/arrows-rotate.png" />
                            </image>
                         </ImageView>
-
-                        <Pane id="DropdownListOrders" layoutX="353.0" layoutY="179.0" prefHeight="440.0" prefWidth="452.0" style="-fx-background-color: #ffffff;" />
                         <ImageView id="deleteButtonEmployee" fx:id="deleteButtonEmployee" layoutX="824.0" layoutY="321.0">
                            <image>
                               <Image url="@../../../Images/trash.png" />
@@ -228,11 +227,10 @@
                               <Image url="@../../../Images/add.png" />
                            </image>
                         </ImageView>
+                        <ListView id="DropdownListOrders" fx:id="DropdownListOrders" layoutX="289.0" layoutY="174.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
                   <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
-                        <Pane id="dishesListMenu" fx:id="dishesListMenu" layoutX="189.0" layoutY="198.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
-                        <Pane id="DropdownListOrders" layoutX="648.0" layoutY="198.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
                         <Text layoutX="320.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dishes">
                            <font>
                               <Font size="24.0" />
@@ -263,11 +261,11 @@
                               <Image url="@../../../Images/add.png" />
                            </image>
                         </ImageView>
+                        <ListView id="dishesListMenu" fx:id="dishesListMenu" layoutX="174.0" layoutY="189.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
+                        <ListView id="drinksListMenu" fx:id="drinksListMenu" layoutX="632.0" layoutY="195.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
                   <Pane id="tablesPane" fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
-                        <Pane id="availableTablesList" fx:id="availableTablesList" layoutX="201.0" layoutY="205.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
-                        <Pane id="reservedTablesList" fx:id="reservedTablesList" layoutX="639.0" layoutY="205.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
                         <Text id="availableTablesTxt" layoutX="282.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Tables">
                            <font>
                               <Font size="24.0" />
@@ -278,6 +276,8 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
+                        <ListView id="availableTablesList" fx:id="availableTablesList" layoutX="186.0" layoutY="205.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
+                        <ListView id="reservedTablesList" fx:id="reservedTablesList" layoutX="624.0" layoutY="205.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
                   <Pane id="reservationsPane" fx:id="reservationsPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
@@ -301,7 +301,7 @@
                               <Image url="@../../../Images/add.png" />
                            </image>
                         </ImageView>
-                        <Pane id="dropdownListReservations" fx:id="dropdownListReservations" layoutX="342.0" layoutY="192.0" prefHeight="492.0" prefWidth="480.0" style="-fx-background-color: #ffffff;" />
+                        <ListView id="dropdownListReservations" fx:id="dropdownListReservations" layoutX="306.0" layoutY="176.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
                </children>
             </StackPane>
