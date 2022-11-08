@@ -1,0 +1,21 @@
+.AdminButtons:hover {
+    -fx-background-color: #3c4944;
+}
+
+.AdminButtons:pressed {
+    -fx-background-color: #c7fff3;
+}
+
+.EmployeeButtons:pressed {
+    -fx-background-color: #c7fff3;
+}
+
+.EmployeeButtons:hover {
+    -fx-background-color: #3c4944;
+}
+
+.dropdownAdmin {
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+    -fx-background-color:  #839B97;
+}
