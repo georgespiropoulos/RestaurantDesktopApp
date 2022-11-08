@@ -264,7 +264,7 @@
                            </image>
                         </ImageView>
                      </children></Pane>
-                  <Pane fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="tablesPane" fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Pane id="availableTablesList" fx:id="availableTablesList" layoutX="201.0" layoutY="205.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
                         <Pane id="reservedTablesList" fx:id="reservedTablesList" layoutX="639.0" layoutY="205.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
@@ -278,30 +278,30 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <ImageView id="refreshButtonTables" fx:id="refreshButtonTables" layoutX="1112.0" layoutY="14.0">
+                     </children></Pane>
+                  <Pane id="reservationsPane" fx:id="reservationsPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
+                     <children>
+                        <ImageView id="refreshButtonReservations" fx:id="refreshButtonReservations" layoutX="1112.0" layoutY="14.0">
                            <image>
                               <Image url="@../../../Images/arrows-rotate.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="editButtonTables" fx:id="editButtonTables" layoutX="563.0" layoutY="284.0">
+                        <ImageView id="editButtonReservations" fx:id="editButtonReservations" layoutX="833.0" layoutY="255.0">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="deleteButtonTables" fx:id="deleteButtonTables" layoutX="567.0" layoutY="354.0">
+                        <ImageView id="deleteButtonReservations" fx:id="deleteButtonReservations" layoutX="837.0" layoutY="323.0">
                            <image>
                               <Image url="@../../../Images/trash.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="addTables" fx:id="addTables" layoutX="566.0" layoutY="225.0">
+                        <ImageView id="addReservations" fx:id="addReservations" layoutX="836.0" layoutY="192.0">
                            <image>
                               <Image url="@../../../Images/add.png" />
                            </image>
                         </ImageView>
-                     </children></Pane>
-                  <Pane fx:id="reservationsPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
-                     <children>
-                        <Label text="Reservations" />
+                        <Pane id="dropdownListReservations" fx:id="dropdownListReservations" layoutX="342.0" layoutY="192.0" prefHeight="492.0" prefWidth="480.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
                </children>
             </StackPane>
