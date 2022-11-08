@@ -229,7 +229,7 @@
                            </image>
                         </ImageView>
                      </children></Pane>
-                  <Pane id="menuPane" fx:id="menuPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Pane id="dishesListMenu" fx:id="dishesListMenu" layoutX="189.0" layoutY="198.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
                         <Pane id="DropdownListOrders" layoutX="648.0" layoutY="198.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
@@ -264,9 +264,40 @@
                            </image>
                         </ImageView>
                      </children></Pane>
-                  <Pane fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                  <Pane fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;">
                      <children>
-                        <Label text="Tables" />
+                        <Pane id="availableTablesList" fx:id="availableTablesList" layoutX="201.0" layoutY="205.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
+                        <Pane id="reservedTablesList" fx:id="reservedTablesList" layoutX="639.0" layoutY="205.0" prefHeight="440.0" prefWidth="331.0" style="-fx-background-color: #ffffff;" />
+                        <Text id="availableTablesTxt" layoutX="282.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Tables">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text id="reservedTablesTxt" layoutX="720.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserved Tables">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <ImageView id="refreshButtonTables" fx:id="refreshButtonTables" layoutX="1112.0" layoutY="14.0">
+                           <image>
+                              <Image url="@../../../Images/arrows-rotate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="editButtonTables" fx:id="editButtonTables" layoutX="563.0" layoutY="284.0">
+                           <image>
+                              <Image url="@../../../Images/Edit.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="deleteButtonTables" fx:id="deleteButtonTables" layoutX="567.0" layoutY="354.0">
+                           <image>
+                              <Image url="@../../../Images/trash.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="addTables" fx:id="addTables" layoutX="566.0" layoutY="225.0">
+                           <image>
+                              <Image url="@../../../Images/add.png" />
+                           </image>
+                        </ImageView>
                      </children></Pane>
                   <Pane fx:id="reservationsPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
