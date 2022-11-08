@@ -52,22 +52,22 @@
       </Pane>
       <Pane layoutY="199.0" prefHeight="745.0" prefWidth="285.0" style="-fx-background-color: #676767;">
          <children>
-            <Button id="profileMenuEmployee" fx:id="profileMenuE" layoutX="4.0" layoutY="41.0" mnemonicParsing="false" onAction="#onClickProfile" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Profile" textFill="WHITE">
+            <Button id="profileMenuEmployee" fx:id="profileMenuE" layoutX="4.0" layoutY="41.0" mnemonicParsing="false" onAction="#onClickProfile" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="EmployeeButtons" text="Profile" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="ordersMenuEmployee" fx:id="ordersMenuE" layoutX="4.0" layoutY="98.0" mnemonicParsing="false" onAction="#onClickOrders" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Orders" textFill="WHITE">
+            <Button id="ordersMenuEmployee" fx:id="ordersMenuE" layoutX="4.0" layoutY="98.0" mnemonicParsing="false" onAction="#onClickOrders" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="EmployeeButtons" text="Orders" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="mainMenuEmployee" fx:id="mainMenuE" layoutX="4.0" layoutY="155.0" mnemonicParsing="false" onAction="#onClickMenu" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Menu" textFill="WHITE">
+            <Button id="mainMenuEmployee" fx:id="mainMenuE" layoutX="4.0" layoutY="155.0" mnemonicParsing="false" onAction="#onClickMenu" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="EmployeeButtons" text="Menu" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="tablesMenuEmployee" fx:id="tablesMenuE" layoutX="4.0" layoutY="212.0" mnemonicParsing="false" onAction="#onClickTables" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" text="Tables" textFill="WHITE">
+            <Button id="tablesMenuEmployee" fx:id="tablesMenuE" layoutX="4.0" layoutY="212.0" mnemonicParsing="false" onAction="#onClickTables" prefHeight="25.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="EmployeeButtons" text="Tables" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
