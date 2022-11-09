@@ -11,6 +11,11 @@
 
 }
 
+.EmployeeButtons {
+    -fx-background-color:  #839B97;
+
+}
+
 .EmployeeButtons:pressed {
     -fx-background-color: #c7fff3;
 }
@@ -31,6 +36,15 @@
 }
 
 dropdownAdmin:pressed {
+    -fx-background-color: #036e56;
+
+}
+
+.iconButtonsA:hover .iconButtonsE:hover {
+    -fx-background-color: #3c4944;
+}
+
+.iconButtonsA:pressed .iconButtonsE:pressed {
     -fx-background-color: #036e56;
 
 }

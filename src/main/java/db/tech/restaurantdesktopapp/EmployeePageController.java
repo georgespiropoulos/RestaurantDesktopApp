@@ -67,6 +67,16 @@ public class EmployeePageController implements Initializable {
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
+
+        profileMenuE.setVisible(true);
+        profileMenuE.setDisable(true);
+        ordersMenuE.setVisible(true);
+        ordersMenuE.setDisable(false);
+        mainMenuE.setVisible(true);
+        mainMenuE.setDisable(false);
+        tablesMenuE.setVisible(true);
+        tablesMenuE.setDisable(false);
+
     }
 
     public void onClickOrders(){
@@ -78,6 +88,15 @@ public class EmployeePageController implements Initializable {
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
+
+        profileMenuE.setVisible(true);
+        profileMenuE.setDisable(false);
+        ordersMenuE.setVisible(true);
+        ordersMenuE.setDisable(true);
+        mainMenuE.setVisible(true);
+        mainMenuE.setDisable(false);
+        tablesMenuE.setVisible(true);
+        tablesMenuE.setDisable(false);
     }
 
     public void onClickMenu(){
@@ -89,6 +108,15 @@ public class EmployeePageController implements Initializable {
         menuPane.setDisable(false);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
+
+        profileMenuE.setVisible(true);
+        profileMenuE.setDisable(false);
+        ordersMenuE.setVisible(true);
+        ordersMenuE.setDisable(false);
+        mainMenuE.setVisible(true);
+        mainMenuE.setDisable(true);
+        tablesMenuE.setVisible(true);
+        tablesMenuE.setDisable(false);
     }
 
     public void onClickTables(){
@@ -100,6 +128,15 @@ public class EmployeePageController implements Initializable {
         menuPane.setDisable(true);
         tablesPane.setVisible(true);
         tablesPane.setDisable(false);
+
+        profileMenuE.setVisible(true);
+        profileMenuE.setDisable(false);
+        ordersMenuE.setVisible(true);
+        ordersMenuE.setDisable(false);
+        mainMenuE.setVisible(true);
+        mainMenuE.setDisable(false);
+        tablesMenuE.setVisible(true);
+        tablesMenuE.setDisable(true);
     }
 
     public void onClickLogout(){
