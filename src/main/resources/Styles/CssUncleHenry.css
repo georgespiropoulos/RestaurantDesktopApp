@@ -1,9 +1,19 @@
-.AdminButtons:hover {
+.adminButtons {
+    -fx-background-color:  #839B97;
+}
+
+.adminButtons:hover {
     -fx-background-color: #3c4944;
 }
 
-.AdminButtons:pressed {
-    -fx-background-color: #c7fff3;
+.adminButtons:pressed {
+    -fx-background-color: #036e56;
+
+}
+
+.EmployeeButtons {
+    -fx-background-color:  #839B97;
+
 }
 
 .EmployeeButtons:pressed {
@@ -15,7 +25,26 @@
 }
 
 .dropdownAdmin {
-    -fx-font-size: 30;
+    -fx-font-size: 20;
     -fx-text-fill: white;
     -fx-background-color:  #839B97;
+}
+
+.dropdownAdmin:hover {
+    -fx-background-color: #3c4944;
+
+}
+
+dropdownAdmin:pressed {
+    -fx-background-color: #036e56;
+
+}
+
+.iconButtonsA:hover .iconButtonsE:hover {
+    -fx-background-color: #3c4944;
+}
+
+.iconButtonsA:pressed .iconButtonsE:pressed {
+    -fx-background-color: #036e56;
+
 }

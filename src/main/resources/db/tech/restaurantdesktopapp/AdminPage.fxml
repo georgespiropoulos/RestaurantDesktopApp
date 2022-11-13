@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -24,29 +25,29 @@
             </ImageView>
             <VBox alignment="CENTER" layoutX="976.0" layoutY="66.0" prefHeight="47.0" prefWidth="160.0">
                <children>
-                  <Label id="dayTxt" fx:id="day" styleClass="date" text="Label" textFill="WHITE">
+                  <Label id="dayTxt" fx:id="day" styleClass="date" stylesheets="@../../../Styles/CssUncleHenry.css" text="Label" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label id="dateTxt" fx:id="date" styleClass="date" text="Label" textFill="WHITE">
+                  <Label id="dateTxt" fx:id="date" styleClass="date" stylesheets="@../../../Styles/CssUncleHenry.css" text="Label" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <Label id="timeTxt" fx:id="time" alignment="CENTER" layoutX="1195.0" layoutY="78.0" prefHeight="47.0" prefWidth="160.0" styleClass="time" text="Time" textFill="WHITE">
+            <Label id="timeTxt" fx:id="time" alignment="CENTER" layoutX="1195.0" layoutY="78.0" prefHeight="47.0" prefWidth="160.0" styleClass="time" stylesheets="@../../../Styles/CssUncleHenry.css" text="Time" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Text fill="WHITE" layoutX="350.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login as:">
+            <Text fill="WHITE" layoutX="350.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Alien Encounters'" text="Login as:">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Text>
-            <Label id="loginTypeAdmin" fx:id="loginTypeAdmin" layoutX="450.0" layoutY="84.0" text="Administrator" textFill="WHITE">
+            <Label id="loginTypeAdmin" fx:id="loginTypeAdmin" layoutX="450.0" layoutY="84.0" styleClass="loginAsAdmin" text="Administrator" textFill="WHITE">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
@@ -55,37 +56,37 @@
       </Pane>
       <Pane layoutX="-8.0" layoutY="199.0" prefHeight="745.0" prefWidth="285.0" style="-fx-background-color: #676767;">
          <children>
-            <Button id="profileMenuAdmin" fx:id="profileMenuA" layoutX="4.0" layoutY="51.0" mnemonicParsing="false" onAction="#onClickProfile" prefHeight="47.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Profile" textFill="WHITE">
+            <Button id="profileMenuAdmin" fx:id="profileMenuA" disable="true" layoutX="4.0" layoutY="51.0" mnemonicParsing="false" onAction="#onClickProfile" prefHeight="47.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Profile" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="ordersMenuAdmin" fx:id="ordersMenuA" layoutX="4.0" layoutY="165.0" mnemonicParsing="false" onAction="#onClickOrders" prefHeight="48.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="Orders" textFill="WHITE">
+            <Button id="ordersMenuAdmin" fx:id="ordersMenuA" layoutX="4.0" layoutY="165.0" mnemonicParsing="false" onAction="#onClickOrders" prefHeight="48.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Orders" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="mainMenuAdmin" fx:id="mainMenuA" layoutX="4.0" layoutY="222.0" mnemonicParsing="false" onAction="#onClickMenu" prefHeight="47.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="Menu" textFill="WHITE">
+            <Button id="mainMenuAdmin" fx:id="mainMenuA" layoutX="4.0" layoutY="222.0" mnemonicParsing="false" onAction="#onClickMenu" prefHeight="47.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Menu" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="tablesMenuAdmin" fx:id="tablesMenuA" layoutX="4.0" layoutY="279.0" mnemonicParsing="false" onAction="#onClickTables" prefHeight="48.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="Tables" textFill="WHITE">
+            <Button id="tablesMenuAdmin" fx:id="tablesMenuA" layoutX="4.0" layoutY="279.0" mnemonicParsing="false" onAction="#onClickTables" prefHeight="48.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Tables" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="EmployeesMenuAdmin" fx:id="employeesMenuA" layoutX="4.0" layoutY="108.0" mnemonicParsing="false" onAction="#onClickEmployees" prefHeight="47.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="Employees" textFill="WHITE">
+            <Button id="EmployeesMenuAdmin" fx:id="employeesMenuA" layoutX="4.0" layoutY="108.0" mnemonicParsing="false" onAction="#onClickEmployees" prefHeight="47.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Employees" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="reservationsMenuAdmin" fx:id="reservationsMenuAdmin" layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#onClickReservations" prefHeight="47.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="Reservations" textFill="WHITE">
+            <Button id="reservationsMenuAdmin" fx:id="reservationsMenuA" layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#onClickReservations" prefHeight="47.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Reservations" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="logoutAdmin" fx:id="logoutAdmin" layoutX="4.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickLogout" prefHeight="48.0" prefWidth="278.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="Logout" textFill="WHITE">
+            <Button id="logoutAdmin" fx:id="logoutAdmin" layoutX="4.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickLogout" prefHeight="48.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Logout" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -96,14 +97,14 @@
          <children>
             <StackPane layoutX="-8.0" prefHeight="745.0" prefWidth="1164.0">
                <children>
-                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
                      <children>
-                        <ImageView id="editButtonProfile" fx:id="editButtonProfile" layoutX="8.0" layoutY="8.0">
+                        <ImageView id="editButtonProfileAdmin" fx:id="editButtonProfile" layoutX="8.0" layoutY="8.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="refreshButtonProfile" fx:id="refreshButtonProfile" layoutX="1112.0" layoutY="9.0">
+                        <ImageView id="refreshButtonProfileAdmin" fx:id="refreshButtonProfile" layoutX="1112.0" layoutY="9.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/arrows-rotate.png" />
                            </image>
@@ -118,7 +119,7 @@
                               <Font size="36.0" />
                            </font>
                         </Text>
-                        <Text id="usernameAdmin" fx:id="usernameAdmin" layoutX="55.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+                        <Text id="usernameAdmin" fx:id="usernameAdmin" layoutX="54.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -128,110 +129,67 @@
                               <Font size="36.0" />
                            </font>
                         </Text>
-                        <Label id="idTxt" fx:id="idTxt" layoutX="237.0" layoutY="84.0" styleClass="idTextAdmin" text="Label">
+                        <Label id="idTxtAdmin" fx:id="idTxtAdmin" layoutX="237.0" layoutY="84.0" text="Label">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Label id="nameTxt" fx:id="nameTxt" layoutX="237.0" layoutY="137.0" styleClass="nameTextAdmin" text="Label">
+                        <Label id="nameTxtAdmin" fx:id="nameTxtAdmin" layoutX="237.0" layoutY="137.0" text="Label">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Label id="surnameTxt" fx:id="surnameTxt" layoutX="237.0" layoutY="190.0" styleClass="surnameTextAdmin" text="Label">
+                        <Label id="surnameTxtAdmin" fx:id="surnameTxtAdmin" layoutX="237.0" layoutY="190.0" text="Label">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Label id="usernameTxt" fx:id="usernameTxt" layoutX="237.0" layoutY="243.0" styleClass="usernameTextAdmin" text="Label">
+                        <Label id="usernameTxtAdmin" fx:id="usernameTxtAdmin" layoutX="237.0" layoutY="243.0" text="Label">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Label>
+                        <Text id="PasswordAdmin" fx:id="PasswordAdmin" layoutX="58.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="158.578125">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Label id="PasswordTxtAdmin" fx:id="PasswordTxtAdmin" layoutX="237.0" layoutY="296.0" text="Label">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="223.0" layoutY="301.0" prefHeight="40.0" prefWidth="170.0" visible="false" />
+                        <TextField layoutX="223.0" layoutY="250.0" prefHeight="40.0" prefWidth="170.0" visible="false" />
+                        <TextField layoutX="223.0" layoutY="197.0" prefHeight="40.0" prefWidth="170.0" visible="false" />
+                        <TextField layoutX="223.0" layoutY="144.0" prefHeight="40.0" prefWidth="170.0" visible="false" />
                      </children></Pane>
-                  <Pane id="ordersPane" fx:id="ordersPane" disable="true" prefHeight="745.0" prefWidth="1381.0" style="-fx-background-color: #D9D9D9;" visible="false">
-                     <children>
-                        <Pane id="DropdownListOrders" layoutX="21.0" layoutY="160.0" prefHeight="497.0" prefWidth="452.0" style="-fx-background-color: #ffffff;" />
-                        <ImageView id="refreshButtonOrders" fx:id="refreshButtonOrders" layoutX="1106.0" layoutY="14.0">
-                           <image>
-                              <Image url="@../../../Images/arrows-rotate.png" />
-                           </image>
-                        </ImageView>
-                        <Button id="NewOrderButton" fx:id="NewOrderButton" layoutX="818.0" layoutY="152.0" mnemonicParsing="false" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="New Order" textFill="WHITE">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
-                        <Button id="AddDrinkButton" fx:id="AddDrinkButton" layoutX="818.0" layoutY="212.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="Add Drink" textFill="WHITE">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
-                        <Button id="AddDishButton" fx:id="AddDishButton" layoutX="818.0" layoutY="275.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" style="-fx-background-color: #839B97;" styleClass="AdminButtons" text="Add Dish" textFill="WHITE">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
-                        <Text id="orderIDAdmin" fx:id="orderIDAdmin" layoutX="869.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order ID:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Label id="orderIDTxt" fx:id="orderIDTxt" layoutX="974.0" layoutY="582.0" text="Label">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label id="tableNoTxt" fx:id="tableNoTxt" layoutX="974.0" layoutY="624.0" text="Label">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Text id="ordersSummaryAdmin" fx:id="ordersSummaryAdmin" layoutX="864.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Label id="ordersSummaryTxt" fx:id="ordersSummaryTxt" layoutX="974.0" layoutY="670.0" text="Label">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <ComboBox id="dropdownOrders" fx:id="dropdownOrders" layoutX="21.0" layoutY="127.0" prefHeight="25.0" prefWidth="452.0" />
-                        <Text id="tableNoAdmin" fx:id="tableNoAdmin" layoutX="866.0" layoutY="651.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table No:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets></Pane>
                   <Pane id="employeesPane" fx:id="employeesPane" disable="true" prefHeight="745.0" prefWidth="1104.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
-                        <ImageView id="editButtonEmployee" fx:id="editButtonEmployee" layoutX="821.0" layoutY="259.0">
+                        <ImageView id="editButtonEmployee" fx:id="editButtonEmployee" layoutX="821.0" layoutY="259.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="refreshButtonEmployee" fx:id="refreshButtonEmployee" layoutX="1112.0" layoutY="14.0">
+                        <ImageView id="refreshButtonEmployee" fx:id="refreshButtonEmployee" layoutX="1112.0" layoutY="14.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/arrows-rotate.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="deleteButtonEmployee" fx:id="deleteButtonEmployee" layoutX="824.0" layoutY="321.0">
+                        <ImageView id="deleteButtonEmployee" fx:id="deleteButtonEmployee" layoutX="824.0" layoutY="321.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/trash.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="addEmployee" fx:id="addEmployee" layoutX="824.0" layoutY="210.0">
+                        <ImageView id="addEmployee" fx:id="addEmployee" layoutX="824.0" layoutY="210.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/add.png" />
                            </image>
                         </ImageView>
                         <ListView id="DropdownListOrders" fx:id="DropdownListOrders" layoutX="289.0" layoutY="174.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
+                        <ComboBox id="dropdownEmployees" fx:id="dropdownEmployees" layoutX="291.0" layoutY="112.0" prefHeight="44.0" prefWidth="511.0" styleClass="dropdownAdmin" stylesheets="@../../../Styles/CssUncleHenry.css" />
                      </children></Pane>
-                  <Pane id="menuPane" fx:id="menuPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Text layoutX="320.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dishes">
                            <font>
@@ -243,28 +201,28 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <ImageView id="refreshButtonMenu" fx:id="refreshButtonMenu" layoutX="1112.0" layoutY="14.0">
+                        <ImageView id="refreshButtonMenuAdmin" fx:id="refreshButtonMenuAdmin" layoutX="1112.0" layoutY="14.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/arrows-rotate.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="editButtonMenu" fx:id="editButtonMenu" layoutX="562.0" layoutY="333.0">
+                        <ImageView id="editButtonMenuAdmin" fx:id="editButtonMenuAdmin" layoutX="562.0" layoutY="333.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="deleteButtonMenu" fx:id="deleteButtonMenu" layoutX="566.0" layoutY="412.0">
+                        <ImageView id="deleteButtonMenuAdmin" fx:id="deleteButtonMenuAdmin" layoutX="566.0" layoutY="412.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/trash.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="addMenu" fx:id="addMenu" layoutX="566.0" layoutY="264.0">
+                        <ImageView id="addMenuAdmin" fx:id="addMenuAdmin" layoutX="566.0" layoutY="264.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/add.png" />
                            </image>
                         </ImageView>
-                        <ListView id="dishesListMenu" fx:id="dishesListMenu" layoutX="174.0" layoutY="189.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
-                        <ListView id="drinksListMenu" fx:id="drinksListMenu" layoutX="632.0" layoutY="195.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
+                        <ListView id="dishesListMenuAdmin" fx:id="dishesListMenuAdmin" layoutX="174.0" layoutY="189.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
+                        <ListView id="drinksListMenuAdmin" fx:id="drinksListMenuAdmin" layoutX="632.0" layoutY="195.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
                   <Pane id="tablesPane" fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
@@ -278,24 +236,24 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <ListView id="availableTablesList" fx:id="availableTablesList" layoutX="186.0" layoutY="205.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
-                        <ListView id="reservedTablesList" fx:id="reservedTablesList" layoutX="624.0" layoutY="205.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
-                        <ImageView id="refreshButtonTables" fx:id="refreshButtonTables" layoutX="1112.0" layoutY="14.0">
+                        <ListView id="availableTablesListAdmin" fx:id="availableTablesListAdmin" layoutX="186.0" layoutY="205.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
+                        <ListView id="reservedTablesListAdmin" fx:id="reservedTablesListAdmin" layoutX="624.0" layoutY="205.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
+                        <ImageView id="refreshButtonTablesAdmin" fx:id="refreshButtonTablesAdmin" layoutX="1112.0" layoutY="14.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/arrows-rotate.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="editButtonTables" fx:id="editButtonTables" layoutX="563.0" layoutY="373.0">
+                        <ImageView id="editButtonTablesAdmin" fx:id="editButtonTablesAdmin" layoutX="563.0" layoutY="373.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="deleteButtonTables" fx:id="deleteButtonTables" layoutX="566.0" layoutY="452.0">
+                        <ImageView id="deleteButtonTablesAdmin" fx:id="deleteButtonTablesAdmin" layoutX="566.0" layoutY="452.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/trash.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="addTables" fx:id="addReservations1" layoutX="566.0" layoutY="313.0">
+                        <ImageView id="addTables" fx:id="addTablesAdmin" layoutX="566.0" layoutY="313.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/add.png" />
                            </image>
@@ -303,28 +261,86 @@
                      </children></Pane>
                   <Pane id="reservationsPane" fx:id="reservationsPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
-                        <ImageView id="refreshButtonReservations" fx:id="refreshButtonReservations" layoutX="1112.0" layoutY="14.0">
+                        <ImageView id="refreshButtonReservationsAdmin" fx:id="refreshButtonReservationsAdmin" layoutX="1112.0" layoutY="14.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/arrows-rotate.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="editButtonReservations" fx:id="editButtonReservations" layoutX="833.0" layoutY="304.0">
+                        <ImageView id="editButtonReservationsAdmin" fx:id="editButtonReservationsAdmin" layoutX="833.0" layoutY="304.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="deleteButtonReservations" fx:id="deleteButtonReservations" layoutX="837.0" layoutY="381.0">
+                        <ImageView id="deleteButtonReservationsAdmin" fx:id="deleteButtonReservationsAdmin" layoutX="837.0" layoutY="381.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/trash.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="addReservations" fx:id="addReservations" layoutX="837.0" layoutY="239.0">
+                        <ImageView id="addReservationsAdmin" fx:id="addReservationsAdmin" layoutX="837.0" layoutY="239.0" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/add.png" />
                            </image>
                         </ImageView>
-                        <ListView id="dropdownListReservations" fx:id="dropdownListReservations" layoutX="306.0" layoutY="125.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
+                        <ListView id="dropdownListReservationsAdmin" fx:id="dropdownListReservationsAdmin" layoutX="306.0" layoutY="125.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
+                  <Pane id="ordersPane" fx:id="ordersPane" disable="true" prefHeight="745.0" prefWidth="1381.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                     <children>
+                        <ImageView id="refreshButtonOrdersAdmin" fx:id="refreshButtonOrdersAdmin" layoutX="1106.0" layoutY="14.0" styleClass="iconButtonsA">
+                           <image>
+                              <Image url="@../../../Images/arrows-rotate.png" />
+                           </image>
+                        </ImageView>
+                        <Button id="NewOrderButtonAdmin" fx:id="NewOrderButtonAdmin" layoutX="818.0" layoutY="152.0" mnemonicParsing="false" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="New Order" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Button id="AddDrinkButtonAdmin" fx:id="AddDrinkButtonAdmin" layoutX="818.0" layoutY="212.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Drink" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Button id="AddDishButtonAdmin" fx:id="AddDishButtonAdmin" layoutX="818.0" layoutY="275.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Dish" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Text id="orderIDAdmin" fx:id="orderIDAdmin" layoutX="869.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order ID:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Label id="orderIDTxtAdmin" fx:id="orderIDTxtAdmin" layoutX="974.0" layoutY="582.0" text="Label">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label id="tableNoTxtAdmin" fx:id="tableNoTxtAdmin" layoutX="974.0" layoutY="624.0" text="Label">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Text id="ordersSummaryAdmin" fx:id="ordersSummaryAdmin" layoutX="864.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Label id="ordersSummaryTxtAdmin" fx:id="ordersSummaryTxtAdmin" layoutX="974.0" layoutY="670.0" text="Label">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ComboBox id="dropdownOrdersAdmin" fx:id="dropdownOrdersAdmin" layoutX="21.0" layoutY="100.0" prefHeight="44.0" prefWidth="471.0" styleClass="dropdownAdmin" stylesheets="@../../../Styles/CssUncleHenry.css" />
+                        <Text id="tableNoAdmin" fx:id="tableNoAdmin" layoutX="866.0" layoutY="651.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table No:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <ListView id="DropdownListOrdersAdmin" fx:id="DropdownListOrdersAdmin" layoutX="21.0" layoutY="152.0" prefHeight="497.0" prefWidth="471.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../Styles/CssUncleHenry.css" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></Pane>
                </children>
             </StackPane>
          </children></Pane>
