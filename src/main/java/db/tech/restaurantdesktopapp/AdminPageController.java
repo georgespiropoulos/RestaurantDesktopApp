@@ -5,10 +5,13 @@ import java.net.URL;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.sql.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.animation.Animation;
@@ -23,51 +26,26 @@ import javafx.scene.control.Label;
 public class AdminPageController implements Initializable{
 
     @FXML
-    private Label day;
+    private Label day, date, time, idTxtAdmin, nameTxtAdmin, surnameTxtAdmin, usernameTxtAdmin, PasswordTxtAdmin;
 
     @FXML
-    private Label date;
+    private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA, reservationsMenuA;
 
     @FXML
-    private Label time;
+    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, reservationsPane;
 
     @FXML
-    private Button logoutAdmin;
+    private ComboBox dropdownOrdersAdmin;
 
-    @FXML
-    private Pane profilePane;
-    @FXML
-    private Pane employeesPane;
+    private User user = new User();
 
-    @FXML
-    private Pane ordersPane;
-
-    @FXML
-    private Pane menuPane;
-
-    @FXML
-    private Pane tablesPane;
-
-    @FXML
-    private Pane reservationsPane;
-
-    @FXML
-    private Button profileMenuA;
-
-    @FXML
-    private Button employeesMenuA;
-
-    @FXML
-    private Button ordersMenuA;
-
-    @FXML
-    private Button mainMenuA;
-
-    @FXML
-    private Button tablesMenuA;
-
-    @FXML
-    private Button reservationsMenuA;
+    public void setUser(User user){
+        idTxtAdmin.setText(Integer.toString(user.getId()));
+        nameTxtAdmin.setText(user.getName());
+        surnameTxtAdmin.setText(user.getSurname());
+        usernameTxtAdmin.setText(user.getUsername());
+        PasswordTxtAdmin.setText(user.getPass());
+    }
 
     public void onClickProfile(){
         profilePane.setVisible(true);
@@ -95,7 +73,6 @@ public class AdminPageController implements Initializable{
         tablesMenuA.setVisible(true);
         reservationsMenuA.setDisable(false);
         reservationsMenuA.setVisible(true);
-
     }
 
     public void onClickEmployees(){
@@ -111,7 +88,6 @@ public class AdminPageController implements Initializable{
         tablesPane.setDisable(true);
         reservationsPane.setVisible(false);
         reservationsPane.setDisable(true);
-
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(true);
@@ -167,7 +143,6 @@ public class AdminPageController implements Initializable{
         tablesPane.setDisable(true);
         reservationsPane.setVisible(false);
         reservationsPane.setDisable(true);
-
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -195,7 +170,6 @@ public class AdminPageController implements Initializable{
         tablesPane.setDisable(false);
         reservationsPane.setVisible(false);
         reservationsPane.setDisable(true);
-
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -223,7 +197,6 @@ public class AdminPageController implements Initializable{
         tablesPane.setDisable(true);
         reservationsPane.setVisible(true);
         reservationsPane.setDisable(false);
-
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -252,7 +225,7 @@ public class AdminPageController implements Initializable{
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {;
         setDateTime();
     }
 

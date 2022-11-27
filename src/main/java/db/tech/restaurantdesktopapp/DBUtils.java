@@ -1,6 +1,9 @@
 package db.tech.restaurantdesktopapp;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class DBUtils {
     private static String driverClassName = "org.postgresql.Driver";
@@ -52,6 +55,7 @@ public class DBUtils {
                 pass = rs.getString("pass");
             }
             dbDisconnect();
+            System.out.println("checkPass completed");
             return pass;
         }catch (Exception e){
             throw e;
@@ -68,9 +72,35 @@ public class DBUtils {
                 admin = rs.getBoolean("administrator");
             }
             dbDisconnect();
+            System.out.println("checkAdmin completed");
             return admin;
         }catch (Exception e){
+            dbDisconnect();
             throw e;
         }
+    }
+
+    public static User getUserDetails(String username) throws Exception{
+        try{
+            dbConnect();
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM USERDETAILS('"+username+"')");
+            while(rs.next()) {
+                int id = rs.getInt("eid");
+                String name = rs.getString("ename");
+                String surname = rs.getString("esurname");
+                Boolean isAdmin = rs.getBoolean("eadmin");
+                String uname = rs.getString("euser");
+                String pass = rs.getString("epass");
+                User user = new User(id, name, surname, uname, pass, isAdmin);
+                return user;
+            }
+            dbDisconnect();
+        }catch (Exception e){
+            System.out.println(e);
+            dbDisconnect();
+            throw e;
+        }
+        return null;
     }
 }

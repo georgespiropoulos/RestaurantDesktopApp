@@ -8,8 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class LoginPageController {
+
     @FXML
     private Label wrongPassUser;
 
@@ -22,6 +24,8 @@ public class LoginPageController {
     @FXML
     private Button loginButton;
 
+    User user = new User();
+
     @FXML
     public void onLoginClick(){
         if (usernameTextbox.getText().equals("") || passwordTextbox.getText().equals("")){
@@ -33,27 +37,37 @@ public class LoginPageController {
                 pass = DBUtils.checkPass(usernameTextbox.getText());
                 if (passwordTextbox.getText().equals(pass)){
                     if(DBUtils.checkAdmin(usernameTextbox.getText())){
-                        Parent root = FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
-                        Scene scene = new Scene(root);
+                        user = user.getDetails(usernameTextbox.getText());
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminPage.fxml"));
+                        Parent root = loader.load();
+                        AdminPageController controller = (AdminPageController) loader.getController();
+                        controller.setUser(user);
                         Stage stage = (Stage) loginButton.getScene().getWindow();
-                        stage.setScene(scene);
+                        stage.setScene(new Scene(root));
                         stage.setResizable(false);
                         stage.show();
+                        System.out.println("Login:\n"+user);
 
                     }else{
-                        Parent root = FXMLLoader.load(getClass().getResource("EmployeePage.fxml"));
-                        Scene scene = new Scene(root);
+                        user = user.getDetails(usernameTextbox.getText());
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeePage.fxml"));
+                        Parent root = loader.load();
+                        EmployeePageController controller = (EmployeePageController) loader.getController();
+                        controller.setUser(user);
                         Stage stage = (Stage) loginButton.getScene().getWindow();
-                        stage.setScene(scene);
+                        stage.setScene(new Scene(root));
                         stage.setResizable(false);
                         stage.show();
+                        System.out.println("Login:\n"+user);
                     }
 
                 }else{
                     wrongPassUser.setVisible(true);
                 }
             }catch (Exception e){
+                wrongPassUser.setText("Something went wrong!");
                 wrongPassUser.setVisible(true);
+                System.out.println(e);
             }
         }
     }
