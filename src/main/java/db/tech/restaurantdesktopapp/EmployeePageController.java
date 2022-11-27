@@ -10,8 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.sql.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.animation.Animation;
@@ -23,40 +26,26 @@ import javafx.scene.control.Label;
 public class EmployeePageController implements Initializable {
 
     @FXML
-    private Label day;
-
-    @FXML
-    private Label date;
-
-    @FXML
-    private Label time;
+    private Label day, date, time, idTxtE, nameTxtE, surnameTxtE, usernameTxtE, PasswordTxtE;
 
     @FXML
     private Button logoutAdmin;
 
     @FXML
-    private Pane profilePane;
+    private Pane profilePane, ordersPane, menuPane, tablesPane;
 
     @FXML
-    private Pane ordersPane;
+    private Button profileMenuE, ordersMenuE, mainMenuE, tablesMenuE;
 
-    @FXML
-    private Pane menuPane;
+    private User user = new User();
 
-    @FXML
-    private Pane tablesPane;
-
-    @FXML
-    private Button profileMenuE;
-
-    @FXML
-    private Button ordersMenuE;
-
-    @FXML
-    private Button mainMenuE;
-
-    @FXML
-    private Button tablesMenuE;
+    public void setUser(User user){
+        idTxtE.setText(Integer.toString(user.getId()));
+        nameTxtE.setText(user.getName());
+        surnameTxtE.setText(user.getSurname());
+        usernameTxtE.setText(user.getUsername());
+        PasswordTxtE.setText(user.getPass());
+    }
 
     public void onClickProfile(){
         profilePane.setVisible(true);
@@ -67,7 +56,6 @@ public class EmployeePageController implements Initializable {
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
-
         profileMenuE.setVisible(true);
         profileMenuE.setDisable(true);
         ordersMenuE.setVisible(true);
@@ -88,7 +76,6 @@ public class EmployeePageController implements Initializable {
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
-
         profileMenuE.setVisible(true);
         profileMenuE.setDisable(false);
         ordersMenuE.setVisible(true);
@@ -108,7 +95,6 @@ public class EmployeePageController implements Initializable {
         menuPane.setDisable(false);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
-
         profileMenuE.setVisible(true);
         profileMenuE.setDisable(false);
         ordersMenuE.setVisible(true);
@@ -128,7 +114,6 @@ public class EmployeePageController implements Initializable {
         menuPane.setDisable(true);
         tablesPane.setVisible(true);
         tablesPane.setDisable(false);
-
         profileMenuE.setVisible(true);
         profileMenuE.setDisable(false);
         ordersMenuE.setVisible(true);

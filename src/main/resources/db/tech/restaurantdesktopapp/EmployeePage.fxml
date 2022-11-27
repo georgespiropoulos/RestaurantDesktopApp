@@ -86,7 +86,7 @@
          <children>
             <StackPane layoutX="1.0" layoutY="1.0" prefHeight="745.0" prefWidth="1158.0">
                <children>
-                  <Pane fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                  <Pane fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
                      <children>
                         <ImageView id="editButtonProfile" fx:id="editButtonProfileE" layoutX="14.0" layoutY="13.0" styleClass="iconButtonsE">
                            <image>
@@ -153,7 +153,7 @@
                         <TextField prefHeight="40.0" prefWidth="170.0" visible="false" />
                         <TextField prefHeight="40.0" prefWidth="170.0" visible="false" />
                      </children></Pane>
-                  <Pane fx:id="ordersPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane fx:id="ordersPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Text id="tableNoEmployee" fx:id="tableNoEmployee1" layoutX="879.0" layoutY="654.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table No:">
                            <font>
