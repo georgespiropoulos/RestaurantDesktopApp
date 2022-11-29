@@ -104,7 +104,7 @@
          <children>
             <StackPane layoutX="-8.0" prefHeight="745.0" prefWidth="1164.0">
                <children>
-                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
                      <children>
                         <ImageView id="editButtonProfileAdmin" fx:id="editButtonProfile" layoutX="8.0" layoutY="8.0" styleClass="iconButtonsA">
                            <image>
@@ -231,7 +231,7 @@
                         <ListView id="dishesListMenuAdmin" fx:id="dishesListMenuAdmin" layoutX="174.0" layoutY="189.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
                         <ListView id="drinksListMenuAdmin" fx:id="drinksListMenuAdmin" layoutX="632.0" layoutY="195.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
-                  <Pane id="tablesPane" fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="tablesPane" fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Text id="availableTablesTxt" layoutX="282.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Tables">
                            <font>
