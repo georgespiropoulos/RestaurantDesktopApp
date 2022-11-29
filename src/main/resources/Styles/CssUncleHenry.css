@@ -11,6 +11,19 @@
 
 }
 
+.adminLogButtons {
+    -fx-background-color: #8f8f8f;
+}
+
+.adminLogButtons:hover {
+    -fx-background-color: #3c4944;
+}
+
+.adminLogButtons:pressed {
+    -fx-background-color: #036e56;
+
+}
+
 .EmployeeButtons {
     -fx-background-color:  #839B97;
 

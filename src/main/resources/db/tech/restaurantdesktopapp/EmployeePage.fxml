@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -75,11 +76,12 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="logoutAdmin" fx:id="logoutAdmin" layoutX="4.0" layoutY="655.0" mnemonicParsing="false" onAction="#onClickLogout" prefHeight="25.0" prefWidth="278.0" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Logout" textFill="WHITE">
+            <Button id="logoutAdmin" fx:id="logoutAdmin" layoutX="4.0" layoutY="655.0" mnemonicParsing="false" onAction="#onClickLogout" prefHeight="25.0" prefWidth="278.0" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Sign out" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
+            <Separator layoutX="-2.0" layoutY="630.0" prefHeight="0.0" prefWidth="285.0" />
          </children>
       </Pane>
       <Pane layoutX="283.0" layoutY="199.0" prefHeight="745.0" prefWidth="1158.0">
