@@ -27,29 +27,29 @@
                <children>
                   <Label id="dayTxt" fx:id="day" styleClass="date" text="Label" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Comic Sans MS Bold" size="24.0" />
                      </font>
                   </Label>
                   <Label id="dateTxt" fx:id="date" styleClass="date" text="Label" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Comic Sans MS Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
             <Label id="timeTxt" fx:id="time" alignment="CENTER" layoutX="1195.0" layoutY="78.0" prefHeight="47.0" prefWidth="160.0" styleClass="time" text="Time" textFill="WHITE">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Comic Sans MS Bold" size="24.0" />
                </font>
             </Label>
             <Text fill="WHITE" layoutX="350.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login as:">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Comic Sans MS Bold" size="24.0" />
                </font>
             </Text>
-            <Label id="loginTypeEmployee" fx:id="loginTypeEmployee" layoutX="450.0" layoutY="84.0" text="User" textFill="WHITE">
+            <Label id="loginTypeEmployee" fx:id="loginTypeEmployee" layoutX="461.0" layoutY="84.0" text="User" textFill="WHITE">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Comic Sans MS Bold" size="24.0" />
                </font>
             </Label>
          </children>

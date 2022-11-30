@@ -28,29 +28,29 @@
                <children>
                   <Label id="dayTxt" fx:id="day" styleClass="date" stylesheets="@../../../Styles/CssUncleHenry.css" text="Label" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Comic Sans MS Bold" size="24.0" />
                      </font>
                   </Label>
                   <Label id="dateTxt" fx:id="date" styleClass="date" stylesheets="@../../../Styles/CssUncleHenry.css" text="Label" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Comic Sans MS Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
             <Label id="timeTxt" fx:id="time" alignment="CENTER" layoutX="1195.0" layoutY="78.0" prefHeight="47.0" prefWidth="160.0" styleClass="time" stylesheets="@../../../Styles/CssUncleHenry.css" text="Time" textFill="WHITE">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Comic Sans MS Bold" size="24.0" />
                </font>
             </Label>
-            <Text fill="WHITE" layoutX="350.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Alien Encounters'" text="Login as:">
+            <Text fill="WHITE" layoutX="336.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login as:">
                <font>
-                  <Font name="Comic Sans MS" size="24.0" />
+                  <Font name="Comic Sans MS Bold" size="24.0" />
                </font>
             </Text>
             <Label id="loginTypeAdmin" fx:id="loginTypeAdmin" layoutX="450.0" layoutY="84.0" styleClass="loginAsAdmin" text="Administrator" textFill="WHITE">
                <font>
-                  <Font name="Comic Sans MS" size="24.0" />
+                  <Font name="Comic Sans MS Bold" size="24.0" />
                </font>
             </Label>
          </children>
@@ -92,7 +92,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="showLogAdmin" fx:id="showLogAdmin" layoutX="4.0" layoutY="598.0" mnemonicParsing="false" onAction="#onClickLogout" prefHeight="48.0" prefWidth="278.0" styleClass="adminLogButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Show Log" textFill="WHITE">
+            <Button id="showLogAdmin" fx:id="showLogAdmin" layoutX="4.0" layoutY="598.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="278.0" styleClass="adminLogButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Show Log" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -104,7 +104,7 @@
          <children>
             <StackPane layoutX="-8.0" prefHeight="745.0" prefWidth="1164.0">
                <children>
-                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <ImageView id="editButtonProfileAdmin" fx:id="editButtonProfile" layoutX="8.0" layoutY="8.0" styleClass="iconButtonsA">
                            <image>
@@ -196,7 +196,7 @@
                         <ListView id="DropdownListOrders" fx:id="DropdownListOrders" layoutX="289.0" layoutY="174.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
                         <ComboBox id="dropdownEmployees" fx:id="dropdownEmployees" layoutX="291.0" layoutY="112.0" prefHeight="44.0" prefWidth="511.0" styleClass="dropdownAdmin" stylesheets="@../../../Styles/CssUncleHenry.css" />
                      </children></Pane>
-                  <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                  <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
                      <children>
                         <Text layoutX="320.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dishes">
                            <font>
