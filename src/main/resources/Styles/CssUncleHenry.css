@@ -1,3 +1,28 @@
+.popUpApplyButtons {
+    -fx-background-color: #839B97;
+}
+
+.popUpApplyButtons:hover {
+    -fx-background-color: #3c4944;
+}
+
+.popUpApplyButtons:pressed {
+    -fx-background-color: #036e56;
+}
+
+.popUpCancelButtons {
+    -fx-background-color: #830F0F;
+}
+
+.popUpCancelButtons:hover {
+    -fx-background-color: #2c0303;
+}
+
+.popUpCancelButtons:pressed {
+    -fx-background-color: #690000;
+}
+
+
 .adminButtons {
     -fx-background-color:  #839B97;
 }
@@ -7,6 +32,19 @@
 }
 
 .adminButtons:pressed {
+    -fx-background-color: #036e56;
+
+}
+
+.adminLogButtons {
+    -fx-background-color: #8f8f8f;
+}
+
+.adminLogButtons:hover {
+    -fx-background-color: #3c4944;
+}
+
+.adminLogButtons:pressed {
     -fx-background-color: #036e56;
 
 }
