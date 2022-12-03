@@ -2,17 +2,16 @@ package db.tech.restaurantdesktopapp;
 
 import java.net.URL;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.sql.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.animation.Animation;
@@ -33,10 +32,11 @@ public class AdminPageController implements Initializable{
     private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA, reservationsMenuA;
 
     @FXML
-    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, reservationsPane;
+    private ImageView editButtonProfile;
 
     @FXML
-    private ComboBox dropdownOrdersAdmin;
+    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, reservationsPane, mainPaneAdmin;
+
 
     private User user = new User();
 
@@ -46,6 +46,13 @@ public class AdminPageController implements Initializable{
         surnameTxtAdmin.setText(user.getSurname());
         usernameTxtAdmin.setText(user.getUsername());
         PasswordTxtAdmin.setText(user.getPass());
+    }
+
+    public void setProfile(String name, String surname, String username, String pass){
+        nameTxtAdmin.setText(name);
+        surnameTxtAdmin.setText(surname);
+        usernameTxtAdmin.setText(username);
+        PasswordTxtAdmin.setText(pass);
     }
 
     public void onClickProfile(){
@@ -212,6 +219,29 @@ public class AdminPageController implements Initializable{
         reservationsMenuA.setVisible(true);
     }
 
+    public void profileUpdate(){
+        try {
+            user = user.getDetails(usernameTxtAdmin.getText());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePopUp.fxml"));
+            Parent root = loader.load();
+            ProfileUpdatePopUpController controller = (ProfileUpdatePopUpController) loader.getController();
+            controller.setText(user);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Edit Profile");
+            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+            stage.showAndWait();
+            String username = controller.getUsername();
+            user = user.getDetails(username);
+            setUser(user);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+
     public void onClickLogout(){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("uncleHenrysLogin.fxml"));
@@ -220,6 +250,7 @@ public class AdminPageController implements Initializable{
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
+            DBUtils.dbDisconnect();
         }catch (Exception e){
             System.out.println("Couldn't load screen!");
         }

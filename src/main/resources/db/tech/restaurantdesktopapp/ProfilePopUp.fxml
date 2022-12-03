@@ -7,41 +7,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.tech.restaurantdesktopapp.EmployeePageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.tech.restaurantdesktopapp.ProfileUpdatePopUpController">
    <children>
-      <TextField fx:id="nameProfileEdit" layoutX="34.0" layoutY="96.0" prefHeight="25.0" prefWidth="298.0" />
-      <Text layoutX="34.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+      <TextField fx:id="nameProfileEdit" layoutX="35.0" layoutY="116.0" prefHeight="25.0" prefWidth="298.0" />
+      <Text layoutX="35.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="surnameProfileEdit" layoutX="34.0" layoutY="153.0" prefHeight="25.0" prefWidth="298.0" />
-      <Text layoutX="34.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname">
+      <TextField fx:id="surnameProfileEdit" layoutX="35.0" layoutY="173.0" prefHeight="25.0" prefWidth="298.0" />
+      <Text layoutX="35.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="usernameProfileEdit" layoutX="34.0" layoutY="213.0" prefHeight="25.0" prefWidth="298.0" />
-      <Text layoutX="34.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+      <TextField fx:id="usernameProfileEdit" layoutX="35.0" layoutY="233.0" prefHeight="25.0" prefWidth="298.0" />
+      <Text layoutX="35.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text layoutX="34.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+      <Text layoutX="35.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="profilePopUpApply" layoutX="141.0" layoutY="435.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" styleClass="popUpApplyButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Apply" textFill="WHITE">
+      <Button fx:id="profilePopUpApply" layoutX="34.0" layoutY="435.0" mnemonicParsing="false" onAction="#apply" prefHeight="48.0" prefWidth="126.0" styleClass="popUpApplyButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Apply" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="profilePopUpCancel" layoutX="332.0" layoutY="435.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" styleClass="popUpCancelButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Cancel" textFill="WHITE">
+      <Button fx:id="profilePopUpCancel" layoutX="206.0" layoutY="435.0" mnemonicParsing="false" onAction="#cancel" prefHeight="48.0" prefWidth="126.0" styleClass="popUpCancelButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Cancel" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <PasswordField fx:id="passwordProfileEdit" layoutX="34.0" layoutY="270.0" prefHeight="25.0" prefWidth="298.0" />
+      <PasswordField fx:id="passwordProfileEdit" layoutX="35.0" layoutY="290.0" prefHeight="25.0" prefWidth="298.0" />
+      <Text layoutX="283.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="idProfileEdit" layoutX="319.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

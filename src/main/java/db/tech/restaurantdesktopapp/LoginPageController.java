@@ -33,6 +33,7 @@ public class LoginPageController {
         }
         else{
             try{
+                DBUtils.dbConnect();
                 String pass;
                 pass = DBUtils.checkPass(usernameTextbox.getText());
                 if (passwordTextbox.getText().equals(pass)){

@@ -47,14 +47,12 @@ public class DBUtils {
 
     public static String checkPass(String username) throws Exception{
         try{
-            dbConnect();
             String pass = null;
             statement = conn.createStatement();
             rs = statement.executeQuery("SELECT TBD.CHECKPASS('"+username+"') as pass");
             while (rs.next()){
                 pass = rs.getString("pass");
             }
-            dbDisconnect();
             System.out.println("checkPass completed");
             return pass;
         }catch (Exception e){
@@ -64,25 +62,21 @@ public class DBUtils {
 
     public static boolean checkAdmin(String username) throws Exception{
         try{
-            dbConnect();
             Boolean admin = false;
             statement = conn.createStatement();
             rs = statement.executeQuery("SELECT TBD.CHECKADMIN('"+username+"') as administrator");
             while (rs.next()){
                 admin = rs.getBoolean("administrator");
             }
-            dbDisconnect();
             System.out.println("checkAdmin completed");
             return admin;
         }catch (Exception e){
-            dbDisconnect();
             throw e;
         }
     }
 
     public static User getUserDetails(String username) throws Exception{
         try{
-            dbConnect();
             statement = conn.createStatement();
             rs = statement.executeQuery("SELECT * FROM TBD.USERDETAILS('"+username+"')");
             while(rs.next()) {
@@ -95,10 +89,23 @@ public class DBUtils {
                 User user = new User(id, name, surname, uname, pass, isAdmin);
                 return user;
             }
-            dbDisconnect();
         }catch (Exception e){
             System.out.println(e);
-            dbDisconnect();
+            throw e;
+        }
+        return null;
+    }
+
+    public static User updateUser(String name, String surname, String uname, String pass, int id) throws Exception{
+        try{
+            statement = conn.createStatement();
+            String stmt = String.format("'%s','%s','%s','%s',%d",name,surname,uname,pass,id);
+            rs = statement.executeQuery("SELECT * FROM TBD.USERUPDATE("+stmt+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(e);
             throw e;
         }
         return null;
