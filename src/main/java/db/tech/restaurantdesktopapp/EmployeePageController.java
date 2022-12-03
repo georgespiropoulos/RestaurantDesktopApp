@@ -143,9 +143,11 @@ public class EmployeePageController implements Initializable {
             stage.setTitle("Edit Profile");
             stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
             stage.showAndWait();
-            String username = controller.getUsername();
-            user = user.getDetails(username);
-            setUser(user);
+            if (controller.getUsername() != null) {
+                String username = controller.getUsername();
+                user = user.getDetails(username);
+                setUser(user);
+            }
         }catch (Exception e){
             System.out.println(e);
         }

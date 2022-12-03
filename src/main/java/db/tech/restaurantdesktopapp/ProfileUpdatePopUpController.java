@@ -43,7 +43,7 @@ public class ProfileUpdatePopUpController {
     }
 
     public void cancel(){
-        Stage stage = (Stage) profilePopUpCancel.getScene().getWindow();
+        Stage stage = (Stage) profilePopUpApply.getScene().getWindow();
         stage.close();
     }
 
