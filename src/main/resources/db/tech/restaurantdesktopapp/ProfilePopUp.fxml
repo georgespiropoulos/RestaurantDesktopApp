@@ -48,7 +48,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="idProfileEdit" layoutX="319.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+      <Text fx:id="idProfileEdit" layoutX="319.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
          <font>
             <Font size="24.0" />
          </font>

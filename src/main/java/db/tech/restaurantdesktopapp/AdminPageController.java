@@ -2,9 +2,13 @@ package db.tech.restaurantdesktopapp;
 
 import java.net.URL;
 
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,13 +29,17 @@ import javafx.scene.control.Label;
 public class AdminPageController implements Initializable{
 
     @FXML
-    private Label day, date, time, idTxtAdmin, nameTxtAdmin, surnameTxtAdmin, usernameTxtAdmin, PasswordTxtAdmin;
+    private Label day, date, time, idTxtAdmin, nameTxtAdmin, surnameTxtAdmin, usernameTxtAdmin, PasswordTxtAdmin,
+            idTxtAdmin1, nameTxtAdmin1, surnameTxtAdmin1, usernameTxtAdmin1, PasswordTxtAdmin1, isAdmin;
 
     @FXML
     private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA, reservationsMenuA;
 
     @FXML
-    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, reservationsPane, mainPaneAdmin;
+    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, reservationsPane;
+
+    @FXML
+    private ComboBox dropdownEmployees;
 
 
     private User user = new User();
@@ -49,6 +57,141 @@ public class AdminPageController implements Initializable{
             i++;
         }
         PasswordTxtAdmin.setText(pass);
+    }
+
+    public void profileUpdate(){
+        try {
+            user = user.getDetails(usernameTxtAdmin.getText());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePopUp.fxml"));
+            Parent root = loader.load();
+            ProfileUpdatePopUpController controller = (ProfileUpdatePopUpController) loader.getController();
+            controller.setText(user);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Edit Profile");
+            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+            stage.showAndWait();
+            if (controller.getUsername() != null) {
+                String username = controller.getUsername();
+                user = user.getDetails(username);
+                setUser(user);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void setUserEmployees(User user){
+        idTxtAdmin1.setText(Integer.toString(user.getId()));
+        nameTxtAdmin1.setText(user.getName());
+        surnameTxtAdmin1.setText(user.getSurname());
+        usernameTxtAdmin1.setText(user.getUsername());
+        int passlen = user.getPass().length();
+        String pass = "";
+        int i=0;
+        while (i < passlen){
+            pass = pass+"*";
+            i++;
+        }
+        PasswordTxtAdmin1.setText(pass);
+        isAdmin.setText(user.getAdmin().toString());
+    }
+
+    public void setEmployeesTab(){
+        try {
+            String[] usernames;
+            usernames = DBUtils.getUsers();
+            dropdownEmployees.setItems(FXCollections.observableArrayList(usernames));
+            dropdownEmployees.setPromptText("Select");
+            EventHandler<ActionEvent> event =
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            try {
+                                String selected;
+                                selected = dropdownEmployees.getValue().toString();
+                                User selectedUser = DBUtils.getUserDetails(selected);
+                                setUserEmployees(selectedUser);
+                            }catch (Exception e){}
+                        }
+                    };
+            dropdownEmployees.setOnAction(event);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void editEmployee(){
+        try {
+            if (usernameTxtAdmin1 != null) {
+                user = user.getDetails(usernameTxtAdmin1.getText());
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeesPopUpAdmin.fxml"));
+                Parent root = loader.load();
+                EmployeesPopUpController controller = (EmployeesPopUpController) loader.getController();
+                controller.setText(user);
+                controller.mode = 2;
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setTitle("Edit Employee");
+                stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+                stage.showAndWait();
+                if (controller.getUsername() != null) {
+                    String username = controller.getUsername();
+                    user = user.getDetails(username);
+                    setUserEmployees(user);
+                    String[] usernames;
+                    usernames = DBUtils.getUsers();
+                    dropdownEmployees.setItems(FXCollections.observableArrayList(usernames));
+                    dropdownEmployees.setPromptText("Select");
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void addEmployee(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeesPopUpAdmin.fxml"));
+            Parent root = loader.load();
+            EmployeesPopUpController controller = (EmployeesPopUpController) loader.getController();
+            controller.mode = 1;
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Add Employee");
+            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+            stage.showAndWait();
+            if (controller.getUsername() != null) {
+                String username = controller.getUsername();
+                user = user.getDetails(username);
+                setUserEmployees(user);
+                String[] usernames;
+                usernames = DBUtils.getUsers();
+                dropdownEmployees.setItems(FXCollections.observableArrayList(usernames));
+                dropdownEmployees.setPromptText("Select");
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void deleteEmployee(){
+        try {
+            if (usernameTxtAdmin1 != null) {
+                DBUtils.deleteEmployee(Integer.parseInt(idTxtAdmin1.getText()));
+                String[] usernames;
+                usernames = DBUtils.getUsers();
+                dropdownEmployees.setItems(FXCollections.observableArrayList(usernames));
+                dropdownEmployees.setPromptText("Select");
+            }
+        }catch (Exception e)
+        {}
     }
 
     public void onClickProfile(){
@@ -103,6 +246,7 @@ public class AdminPageController implements Initializable{
         tablesMenuA.setVisible(true);
         reservationsMenuA.setDisable(false);
         reservationsMenuA.setVisible(true);
+        setEmployeesTab();
     }
 
     public void onClickOrders(){
@@ -212,31 +356,6 @@ public class AdminPageController implements Initializable{
         reservationsMenuA.setDisable(true);
         reservationsMenuA.setVisible(true);
     }
-
-    public void profileUpdate(){
-        try {
-            user = user.getDetails(usernameTxtAdmin.getText());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePopUp.fxml"));
-            Parent root = loader.load();
-            ProfileUpdatePopUpController controller = (ProfileUpdatePopUpController) loader.getController();
-            controller.setText(user);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Edit Profile");
-            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
-            stage.showAndWait();
-            if (controller.getUsername() != null) {
-                String username = controller.getUsername();
-                user = user.getDetails(username);
-                setUser(user);
-            }
-        }catch (Exception e){
-            System.out.println(e);
-        }
-    }
-
 
     public void onClickLogout(){
         try {
