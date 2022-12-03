@@ -50,7 +50,7 @@ public class DBUtils {
             dbConnect();
             String pass = null;
             statement = conn.createStatement();
-            rs = statement.executeQuery("SELECT CHECKPASS('"+username+"') as pass");
+            rs = statement.executeQuery("SELECT TBD.CHECKPASS('"+username+"') as pass");
             while (rs.next()){
                 pass = rs.getString("pass");
             }
@@ -67,7 +67,7 @@ public class DBUtils {
             dbConnect();
             Boolean admin = false;
             statement = conn.createStatement();
-            rs = statement.executeQuery("SELECT CHECKADMIN('"+username+"') as administrator");
+            rs = statement.executeQuery("SELECT TBD.CHECKADMIN('"+username+"') as administrator");
             while (rs.next()){
                 admin = rs.getBoolean("administrator");
             }
@@ -84,14 +84,14 @@ public class DBUtils {
         try{
             dbConnect();
             statement = conn.createStatement();
-            rs = statement.executeQuery("SELECT * FROM USERDETAILS('"+username+"')");
+            rs = statement.executeQuery("SELECT * FROM TBD.USERDETAILS('"+username+"')");
             while(rs.next()) {
-                int id = rs.getInt("eid");
-                String name = rs.getString("ename");
-                String surname = rs.getString("esurname");
-                Boolean isAdmin = rs.getBoolean("eadmin");
-                String uname = rs.getString("euser");
-                String pass = rs.getString("epass");
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                String surname = rs.getString(3);
+                Boolean isAdmin = rs.getBoolean(4);
+                String uname = rs.getString(5);
+                String pass = rs.getString(6);
                 User user = new User(id, name, surname, uname, pass, isAdmin);
                 return user;
             }
