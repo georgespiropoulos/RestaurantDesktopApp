@@ -90,14 +90,9 @@
                <children>
                   <Pane fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
                      <children>
-                        <ImageView id="editButtonProfile" fx:id="editButtonProfileE" layoutX="14.0" layoutY="13.0" onMouseClicked="#profileUpdate" styleClass="iconButtonsE">
+                        <ImageView id="editButtonProfile" fx:id="editButtonProfileE" layoutX="1095.0" layoutY="14.0" onMouseClicked="#profileUpdate" styleClass="iconButtonsE">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView id="refreshButtonProfile" fx:id="refreshButtonProfileE" layoutX="1106.0" layoutY="14.0" styleClass="iconButtonsE">
-                           <image>
-                              <Image url="@../../../Images/arrows-rotate.png" />
                            </image>
                         </ImageView>
                         <Text id="idEmployee" fx:id="idEmployee" layoutX="170.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
