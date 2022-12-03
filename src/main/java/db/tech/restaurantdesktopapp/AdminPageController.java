@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -32,9 +31,6 @@ public class AdminPageController implements Initializable{
     private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA, reservationsMenuA;
 
     @FXML
-    private ImageView editButtonProfile;
-
-    @FXML
     private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, reservationsPane, mainPaneAdmin;
 
 
@@ -45,13 +41,13 @@ public class AdminPageController implements Initializable{
         nameTxtAdmin.setText(user.getName());
         surnameTxtAdmin.setText(user.getSurname());
         usernameTxtAdmin.setText(user.getUsername());
-        PasswordTxtAdmin.setText(user.getPass());
-    }
-
-    public void setProfile(String name, String surname, String username, String pass){
-        nameTxtAdmin.setText(name);
-        surnameTxtAdmin.setText(surname);
-        usernameTxtAdmin.setText(username);
+        int passlen = user.getPass().length();
+        String pass = "";
+        int i=0;
+        while (i < passlen){
+            pass = pass+"*";
+            i++;
+        }
         PasswordTxtAdmin.setText(pass);
     }
 
@@ -68,7 +64,6 @@ public class AdminPageController implements Initializable{
         tablesPane.setDisable(true);
         reservationsPane.setVisible(false);
         reservationsPane.setDisable(true);
-
         profileMenuA.setDisable(true);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -123,7 +118,6 @@ public class AdminPageController implements Initializable{
         tablesPane.setDisable(true);
         reservationsPane.setVisible(false);
         reservationsPane.setDisable(true);
-
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);

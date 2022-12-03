@@ -1,9 +1,6 @@
 package db.tech.restaurantdesktopapp;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 public class DBUtils {
     private static String driverClassName = "org.postgresql.Driver";
