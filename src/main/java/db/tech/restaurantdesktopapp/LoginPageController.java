@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class LoginPageController {
 
@@ -33,6 +32,7 @@ public class LoginPageController {
         }
         else{
             try{
+                DBUtils.dbConnect();
                 String pass;
                 pass = DBUtils.checkPass(usernameTextbox.getText());
                 if (passwordTextbox.getText().equals(pass)){

@@ -1,9 +1,6 @@
 package db.tech.restaurantdesktopapp;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 public class DBUtils {
     private static String driverClassName = "org.postgresql.Driver";
@@ -47,14 +44,12 @@ public class DBUtils {
 
     public static String checkPass(String username) throws Exception{
         try{
-            dbConnect();
             String pass = null;
             statement = conn.createStatement();
-            rs = statement.executeQuery("SELECT CHECKPASS('"+username+"') as pass");
+            rs = statement.executeQuery("SELECT TBD.CHECKPASS('"+username+"') as pass");
             while (rs.next()){
                 pass = rs.getString("pass");
             }
-            dbDisconnect();
             System.out.println("checkPass completed");
             return pass;
         }catch (Exception e){
@@ -64,41 +59,50 @@ public class DBUtils {
 
     public static boolean checkAdmin(String username) throws Exception{
         try{
-            dbConnect();
             Boolean admin = false;
             statement = conn.createStatement();
-            rs = statement.executeQuery("SELECT CHECKADMIN('"+username+"') as administrator");
+            rs = statement.executeQuery("SELECT TBD.CHECKADMIN('"+username+"') as administrator");
             while (rs.next()){
                 admin = rs.getBoolean("administrator");
             }
-            dbDisconnect();
             System.out.println("checkAdmin completed");
             return admin;
         }catch (Exception e){
-            dbDisconnect();
             throw e;
         }
     }
 
     public static User getUserDetails(String username) throws Exception{
         try{
-            dbConnect();
             statement = conn.createStatement();
-            rs = statement.executeQuery("SELECT * FROM USERDETAILS('"+username+"')");
+            rs = statement.executeQuery("SELECT * FROM TBD.USERDETAILS('"+username+"')");
             while(rs.next()) {
-                int id = rs.getInt("eid");
-                String name = rs.getString("ename");
-                String surname = rs.getString("esurname");
-                Boolean isAdmin = rs.getBoolean("eadmin");
-                String uname = rs.getString("euser");
-                String pass = rs.getString("epass");
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                String surname = rs.getString(3);
+                Boolean isAdmin = rs.getBoolean(4);
+                String uname = rs.getString(5);
+                String pass = rs.getString(6);
                 User user = new User(id, name, surname, uname, pass, isAdmin);
                 return user;
             }
-            dbDisconnect();
         }catch (Exception e){
             System.out.println(e);
-            dbDisconnect();
+            throw e;
+        }
+        return null;
+    }
+
+    public static User updateUser(String name, String surname, String uname, String pass, int id) throws Exception{
+        try{
+            statement = conn.createStatement();
+            String stmt = String.format("'%s','%s','%s','%s',%d",name,surname,uname,pass,id);
+            rs = statement.executeQuery("SELECT * FROM TBD.USERUPDATE("+stmt+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(e);
             throw e;
         }
         return null;

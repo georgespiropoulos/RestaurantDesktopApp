@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="944.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.tech.restaurantdesktopapp.AdminPageController">
+<Pane fx:id="mainPaneAdmin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="944.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.tech.restaurantdesktopapp.AdminPageController">
    <children>
       <Pane prefHeight="200.0" prefWidth="1440.0" style="-fx-background-color: #676767;">
          <children>
@@ -104,9 +104,9 @@
          <children>
             <StackPane layoutX="-8.0" prefHeight="745.0" prefWidth="1164.0">
                <children>
-                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
                      <children>
-                        <ImageView id="editButtonProfileAdmin" fx:id="editButtonProfile" layoutX="8.0" layoutY="8.0" styleClass="iconButtonsA">
+                        <ImageView id="editButtonProfileAdmin" fx:id="editButtonProfile" layoutX="8.0" layoutY="8.0" onMouseClicked="#profileUpdate" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
                            </image>
@@ -196,7 +196,7 @@
                         <ListView id="DropdownListOrders" fx:id="DropdownListOrders" layoutX="289.0" layoutY="174.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
                         <ComboBox id="dropdownEmployees" fx:id="dropdownEmployees" layoutX="291.0" layoutY="112.0" prefHeight="44.0" prefWidth="511.0" styleClass="dropdownAdmin" stylesheets="@../../../Styles/CssUncleHenry.css" />
                      </children></Pane>
-                  <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Text layoutX="320.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dishes">
                            <font>
@@ -252,7 +252,7 @@
                         </ImageView>
                         <ImageView id="editButtonTablesAdmin" fx:id="editButtonTablesAdmin" fitHeight="40.0" fitWidth="40.0" layoutX="563.0" layoutY="383.0" styleClass="iconButtonsA">
                            <image>
-                              <Image url="@\C:\Users\kkoum\IdeaProjects\RestaurantDesktopApp\src\main\resources\Images\rightleft.png" />
+                              <Image url="@../../../Images/rightleft.png" />
                            </image>
                         </ImageView>
                         <ImageView id="deleteButtonTablesAdmin" fx:id="deleteButtonTablesAdmin" layoutX="566.0" layoutY="452.0" styleClass="iconButtonsA">

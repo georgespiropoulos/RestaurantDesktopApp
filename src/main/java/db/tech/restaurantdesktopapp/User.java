@@ -4,10 +4,8 @@ public class User {
     private int id;
     private String username;
     private String name;
-
     private String surname;
     private String pass;
-
     private Boolean isAdmin;
 
     public User(){}
