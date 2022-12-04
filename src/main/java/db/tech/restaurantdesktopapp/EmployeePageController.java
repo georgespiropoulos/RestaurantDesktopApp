@@ -32,18 +32,17 @@ public class EmployeePageController implements Initializable {
     orderIDTxtEmployee1, tableNoTxtEmployee1, ordersSummaryTxtEmployee1;
 
     @FXML
-    private Button logoutAdmin;
-
-    @FXML
     private Pane profilePane, ordersPane, menuPane, tablesPane;
 
     @FXML
-    private Button profileMenuE, ordersMenuE, mainMenuE, tablesMenuE;
+    private Button logoutAdmin, profileMenuE, ordersMenuE, mainMenuE, tablesMenuE, completedButtonEmployee,
+            AddDishButtonEmployee1, AddDrinkButtonEmployee1;
     @FXML
     private ComboBox dropdownOrdersEmployee1;
 
     @FXML
-    private ListView DropdownListOrdersEmployee1;
+    private ListView DropdownListOrdersEmployee1, availableTablesEmployee, reservedTablesEmployee,
+            dishesListMenuEmployee, drinksListMenuEmployee;
 
     private User user = new User();
 
@@ -96,6 +95,15 @@ public class EmployeePageController implements Initializable {
 
     public void setOrderDetails(Order order){
         try {
+            if(order.getStatus()==0){
+                completedButtonEmployee.setDisable(false);
+                completedButtonEmployee.setVisible(true);
+            }else{
+                completedButtonEmployee.setDisable(true);
+                completedButtonEmployee.setVisible(false);
+                AddDrinkButtonEmployee1.setDisable(true);
+                AddDishButtonEmployee1.setDisable(true);
+            }
             order.setDishes(DBUtils.getOrderDishes(order.getOrderid()));
             order.setDrinks(DBUtils.getOrderDrinks(order.getOrderid()));
             orderIDTxtEmployee1.setText(Integer.toString(order.getOrderid()));
@@ -114,6 +122,51 @@ public class EmployeePageController implements Initializable {
             }
             DropdownListOrdersEmployee1.setItems(list);
         }catch (Exception e){}
+    }
+
+    public void completedOrder(){
+        try {
+            DBUtils.updateOrderStatus(Integer.parseInt(orderIDTxtEmployee1.getText()));
+            DBUtils.freeTable(Integer.parseInt(tableNoTxtEmployee1.getText()));
+            completedButtonEmployee.setDisable(true);
+            completedButtonEmployee.setVisible(false);
+            AddDrinkButtonEmployee1.setDisable(true);
+            AddDishButtonEmployee1.setDisable(true);
+            String[] orders;
+            orders = DBUtils.getOrders();
+            for (int i = 0; i < orders.length; i++) {
+                int status = DBUtils.getOrderDetails(Integer.parseInt(orders[i])).getStatus();
+                if (status == 1) {
+                    orders[i] = orders[i] + " [COMPLETED]";
+                } else orders[i] = orders[i] + " [PENDING]";
+            }
+            dropdownOrdersEmployee1.setItems(FXCollections.observableArrayList(orders));
+            dropdownOrdersEmployee1.setPromptText("Select Order ID");
+        }catch (Exception e){}
+    }
+
+    public void setTablesTab(){
+        try {
+            int[] tablesA;
+            int[] tablesNA;
+            String[] tablesAids;
+            String[] tablesNAids;
+            tablesA = DBUtils.getAvailableTables();
+            tablesNA = DBUtils.getNotAvailableTables();
+            tablesNAids = new String[tablesNA.length];
+            tablesAids = new String[tablesA.length];
+            for (int i = 0; i<tablesA.length; i++){
+                tablesAids[i] = Integer.toString(tablesA[i]);
+            }
+            for (int i = 0; i<tablesNA.length; i++){
+                tablesNAids[i] = Integer.toString(tablesNA[i]);
+            }
+            availableTablesEmployee.setItems(FXCollections.observableArrayList(tablesAids));
+            reservedTablesEmployee.setItems(FXCollections.observableArrayList(tablesNAids));
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     public void addDrink(){
@@ -228,6 +281,38 @@ public class EmployeePageController implements Initializable {
         }
     }
 
+    public void setMenuTab(){
+        try {
+            Dish[] Dishes;
+            Drink[] Drinks;
+            String[] DishLines;
+            String[] DrinkLines;
+            Dishes = DBUtils.getDishes();
+            Drinks = DBUtils.getDrinks();
+            DishLines = new String[Dishes.length];
+            DrinkLines = new String[Drinks.length];
+            for (int i = 0; i<Dishes.length; i++){
+                Dish dish = Dishes[i];
+                String avail;
+                if (dish.isDishavailability()) avail = "Available";
+                else avail = "Not Available";
+                DishLines[i] = dish.getDishid()+" "+dish.getDishname()+" "+avail+" "+dish.getPrice()+"€";
+            }
+            for (int i = 0; i<Drinks.length; i++){
+                Drink drink = Drinks[i];
+                String avail;
+                if (drink.isDrinkavailability()) avail = "Available";
+                else avail = "Not Available";
+                DrinkLines[i] = drink.getDrinkid()+" "+drink.getDrinkname()+" "+avail+" "+drink.getPrice()+"€";
+            }
+            dishesListMenuEmployee.setItems(FXCollections.observableArrayList(DishLines));
+            drinksListMenuEmployee.setItems(FXCollections.observableArrayList(DrinkLines));
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
     public void onClickProfile(){
         profilePane.setVisible(true);
         profilePane.setDisable(false);
@@ -284,6 +369,7 @@ public class EmployeePageController implements Initializable {
         mainMenuE.setDisable(true);
         tablesMenuE.setVisible(true);
         tablesMenuE.setDisable(false);
+        setMenuTab();
     }
 
     public void onClickTables(){
@@ -303,6 +389,7 @@ public class EmployeePageController implements Initializable {
         mainMenuE.setDisable(false);
         tablesMenuE.setVisible(true);
         tablesMenuE.setDisable(true);
+        setTablesTab();
     }
 
     public void profileUpdate(){

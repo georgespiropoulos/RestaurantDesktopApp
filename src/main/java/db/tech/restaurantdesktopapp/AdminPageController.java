@@ -33,16 +33,18 @@ public class AdminPageController implements Initializable{
             orderIDTxtAdmin, tableNoTxtAdmin, ordersSummaryTxtAdmin;
 
     @FXML
-    private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA;
+    private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA, showLogAdmin,
+            completedButtonAdmin, AddDrinkButtonAdmin, AddDishButtonAdmin;
 
     @FXML
-    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane;
+    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, logPaneAdmin;
 
     @FXML
     private ComboBox dropdownEmployees, dropdownOrdersAdmin;
 
     @FXML
-    private ListView DropdownListOrdersAdmin;
+    private ListView DropdownListOrdersAdmin, availableTablesListAdmin, reservedTablesListAdmin, logListAdmin,
+    dishesListMenuAdmin, drinksListMenuAdmin;
 
 
     private User user = new User();
@@ -159,6 +161,15 @@ public class AdminPageController implements Initializable{
 
     public void setOrderDetails(Order order){
         try {
+            if(order.getStatus()==0){
+                completedButtonAdmin.setDisable(false);
+                completedButtonAdmin.setVisible(true);
+            }else{
+                completedButtonAdmin.setDisable(true);
+                completedButtonAdmin.setVisible(false);
+                AddDrinkButtonAdmin.setDisable(true);
+                AddDishButtonAdmin.setDisable(true);
+            }
             order.setDishes(DBUtils.getOrderDishes(order.getOrderid()));
             order.setDrinks(DBUtils.getOrderDrinks(order.getOrderid()));
             orderIDTxtAdmin.setText(Integer.toString(order.getOrderid()));
@@ -176,6 +187,27 @@ public class AdminPageController implements Initializable{
                 list.add(line);
             }
             DropdownListOrdersAdmin.setItems(list);
+        }catch (Exception e){}
+    }
+
+    public void completedOrder(){
+        try {
+            DBUtils.updateOrderStatus(Integer.parseInt(orderIDTxtAdmin.getText()));
+            DBUtils.freeTable(Integer.parseInt(tableNoTxtAdmin.getText()));
+            completedButtonAdmin.setDisable(true);
+            completedButtonAdmin.setVisible(false);
+            AddDrinkButtonAdmin.setDisable(true);
+            AddDishButtonAdmin.setDisable(true);
+            String[] orders;
+            orders = DBUtils.getOrders();
+            for (int i = 0; i < orders.length; i++) {
+                int status = DBUtils.getOrderDetails(Integer.parseInt(orders[i])).getStatus();
+                if (status == 1) {
+                    orders[i] = orders[i] + " [COMPLETED]";
+                } else orders[i] = orders[i] + " [PENDING]";
+            }
+            dropdownOrdersAdmin.setItems(FXCollections.observableArrayList(orders));
+            dropdownOrdersAdmin.setPromptText("Select Order ID");
         }catch (Exception e){}
     }
 
@@ -362,6 +394,211 @@ public class AdminPageController implements Initializable{
         {}
     }
 
+    public void setTablesTab(){
+        try {
+            int[] tablesA;
+            int[] tablesNA;
+            String[] tablesAids;
+            String[] tablesNAids;
+            tablesA = DBUtils.getAvailableTables();
+            tablesNA = DBUtils.getNotAvailableTables();
+            tablesNAids = new String[tablesNA.length];
+            tablesAids = new String[tablesA.length];
+            for (int i = 0; i<tablesA.length; i++){
+                tablesAids[i] = Integer.toString(tablesA[i]);
+            }
+            for (int i = 0; i<tablesNA.length; i++){
+                tablesNAids[i] = Integer.toString(tablesNA[i]);
+            }
+            availableTablesListAdmin.setItems(FXCollections.observableArrayList(tablesAids));
+            reservedTablesListAdmin.setItems(FXCollections.observableArrayList(tablesNAids));
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void addTable(){
+        try {
+            DBUtils.addTable();
+            setTablesTab();
+        }catch (Exception e){}
+    }
+
+    public void deleteTable(){
+        try {
+            ObservableList<String> index = availableTablesListAdmin.getSelectionModel().getSelectedItems();
+            int tableid = Integer.parseInt(index.get(0));
+            DBUtils.deleteTable(tableid);
+            setTablesTab();
+        }catch (Exception e){}
+    }
+
+    public void setLogTab(){
+        try{
+            String[] log = DBUtils.showLog();
+            logListAdmin.setItems(FXCollections.observableArrayList(log));
+        }catch (Exception e){}
+    }
+
+    public void setMenuTab(){
+        try {
+            Dish[] Dishes;
+            Drink[] Drinks;
+            String[] DishLines;
+            String[] DrinkLines;
+            Dishes = DBUtils.getDishes();
+            Drinks = DBUtils.getDrinks();
+            DishLines = new String[Dishes.length];
+            DrinkLines = new String[Drinks.length];
+            for (int i = 0; i<Dishes.length; i++){
+                Dish dish = Dishes[i];
+                String avail;
+                if (dish.isDishavailability()) avail = "Available";
+                else avail = "Not Available";
+                DishLines[i] = dish.getDishid()+" "+dish.getDishname()+" "+avail+" "+dish.getPrice()+"€";
+            }
+            for (int i = 0; i<Drinks.length; i++){
+                Drink drink = Drinks[i];
+                String avail;
+                if (drink.isDrinkavailability()) avail = "Available";
+                else avail = "Not Available";
+                DrinkLines[i] = drink.getDrinkid()+" "+drink.getDrinkname()+" "+avail+" "+drink.getPrice()+"€";
+            }
+            dishesListMenuAdmin.setItems(FXCollections.observableArrayList(DishLines));
+            drinksListMenuAdmin.setItems(FXCollections.observableArrayList(DrinkLines));
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void editDishMenu(){
+        try {
+            if(dishesListMenuAdmin.getSelectionModel().getSelectedItems() == null) {
+                return;
+            }
+            ObservableList<String> dishes = dishesListMenuAdmin.getSelectionModel().getSelectedItems();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPopUpAddAdmin.fxml"));
+            Parent root = loader.load();
+            MenuPopUpController controller = (MenuPopUpController) loader.getController();
+            String[] dishSt = dishes.get(0).split(" ",2);
+            int dishid = Integer.parseInt(dishSt[0]);
+            Dish dish = DBUtils.getDish(dishid);
+            controller.mode = 1;
+            controller.op = 2;
+            controller.id = dish.getDishid();
+            controller.nameMenuPopUpAddAdmin.setText(dish.getDishname());
+            controller.descMenuPopUpAddAdmin.setText(dish.getDishdescription());
+            controller.priceMenuPopUpAddAdmin.setText(Float.toString(dish.getPrice()));
+            controller.availabilityMenuPopUpAddAdmin.setSelected(dish.isDishavailability());
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Edit Dish");
+            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+            stage.showAndWait();
+            setMenuTab();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void addDishMenu(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPopUpAddAdmin.fxml"));
+            Parent root = loader.load();
+            MenuPopUpController controller = (MenuPopUpController) loader.getController();
+            controller.mode = 1;
+            controller.op = 1;
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Add Dish");
+            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+            stage.showAndWait();
+            setMenuTab();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void editDrinkMenu(){
+        try {
+            if(drinksListMenuAdmin.getSelectionModel().getSelectedItems() == null) {
+                return;
+            }
+            ObservableList<String> drinks = drinksListMenuAdmin.getSelectionModel().getSelectedItems();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPopUpAddAdmin.fxml"));
+            Parent root = loader.load();
+            MenuPopUpController controller = (MenuPopUpController) loader.getController();
+            String[] drinkSt = drinks.get(0).split(" ",2);
+            int drinkid = Integer.parseInt(drinkSt[0]);
+            Drink drink = DBUtils.getDrink(drinkid);
+            controller.id = drink.getDrinkid();
+            controller.mode = 2;
+            controller.op = 2;
+            controller.nameMenuPopUpAddAdmin.setText(drink.getDrinkname());
+            controller.descMenuPopUpAddAdmin.setText(drink.getDrinkdescription());
+            controller.priceMenuPopUpAddAdmin.setText(Float.toString(drink.getPrice()));
+            controller.availabilityMenuPopUpAddAdmin.setSelected(drink.isDrinkavailability());
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Edit Drink");
+            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+            stage.showAndWait();
+            setMenuTab();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void addDrinkMenu(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuPopUpAddAdmin.fxml"));
+            Parent root = loader.load();
+            MenuPopUpController controller = (MenuPopUpController) loader.getController();
+            controller.mode = 2;
+            controller.op = 1;
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Add Drink");
+            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+            stage.showAndWait();
+            setMenuTab();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void deleteDish(){
+        try {
+            ObservableList<String> index = dishesListMenuAdmin.getSelectionModel().getSelectedItems();
+            String[] str = index.get(0).split(" ", 2);
+            int dishid = Integer.parseInt(str[0]);
+            DBUtils.deleteDish(dishid);
+            setMenuTab();
+        }catch (Exception e){System.out.println(e);}
+    }
+
+    public void deleteDrink(){
+        try {
+            ObservableList<String> index = drinksListMenuAdmin.getSelectionModel().getSelectedItems();
+            String[] str = index.get(0).split(" ", 2);
+            int drinkid = Integer.parseInt(str[0]);
+            DBUtils.deleteDrink(drinkid);
+            setMenuTab();
+        }catch (Exception e){System.out.println(e);}
+    }
+
+
+
     public void onClickProfile(){
         profilePane.setVisible(true);
         profilePane.setDisable(false);
@@ -373,6 +610,8 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
+        logPaneAdmin.setVisible(false);
+        logPaneAdmin.setDisable(true);
         profileMenuA.setDisable(true);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -383,6 +622,8 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(false);
         tablesMenuA.setVisible(true);
+        showLogAdmin.setDisable(false);
+        showLogAdmin.setVisible(true);
     }
 
     public void onClickEmployees(){
@@ -396,6 +637,8 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
+        logPaneAdmin.setVisible(false);
+        logPaneAdmin.setDisable(true);
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(true);
@@ -406,6 +649,8 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(false);
         tablesMenuA.setVisible(true);
+        showLogAdmin.setDisable(false);
+        showLogAdmin.setVisible(true);
         setEmployeesTab();
     }
 
@@ -420,6 +665,8 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
+        logPaneAdmin.setVisible(false);
+        logPaneAdmin.setDisable(true);
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -430,6 +677,8 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(false);
         tablesMenuA.setVisible(true);
+        showLogAdmin.setDisable(false);
+        showLogAdmin.setVisible(true);
         setOrdersTab();
     }
 
@@ -444,6 +693,8 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(false);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
+        logPaneAdmin.setVisible(false);
+        logPaneAdmin.setDisable(true);
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -454,6 +705,9 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(false);
         tablesMenuA.setVisible(true);
+        showLogAdmin.setDisable(false);
+        showLogAdmin.setVisible(true);
+        setMenuTab();
     }
 
     public void onClickTables(){
@@ -467,6 +721,8 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(true);
         tablesPane.setVisible(true);
         tablesPane.setDisable(false);
+        logPaneAdmin.setVisible(false);
+        logPaneAdmin.setDisable(true);
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -477,6 +733,37 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(true);
         tablesMenuA.setVisible(true);
+        showLogAdmin.setDisable(false);
+        showLogAdmin.setVisible(true);
+        setTablesTab();
+    }
+
+    public void onClickShowLog(){
+        profilePane.setVisible(false);
+        profilePane.setDisable(true);
+        employeesPane.setVisible(false);
+        employeesPane.setDisable(true);
+        ordersPane.setVisible(false);
+        ordersPane.setDisable(true);
+        menuPane.setVisible(false);
+        menuPane.setDisable(true);
+        tablesPane.setVisible(false);
+        tablesPane.setDisable(true);
+        logPaneAdmin.setVisible(true);
+        logPaneAdmin.setDisable(false);
+        profileMenuA.setDisable(false);
+        profileMenuA.setVisible(true);
+        employeesMenuA.setDisable(false);
+        employeesMenuA.setVisible(true);
+        ordersMenuA.setDisable(false);
+        ordersMenuA.setVisible(true);
+        mainMenuA.setDisable(false);
+        mainMenuA.setVisible(true);
+        tablesMenuA.setDisable(false);
+        tablesMenuA.setVisible(true);
+        showLogAdmin.setDisable(true);
+        showLogAdmin.setVisible(true);
+        setLogTab();
     }
 
     public void onClickLogout(){

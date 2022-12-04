@@ -87,7 +87,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="showLogAdmin" fx:id="showLogAdmin" layoutX="4.0" layoutY="598.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="278.0" styleClass="adminLogButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Show Log" textFill="WHITE">
+            <Button id="showLogAdmin" fx:id="showLogAdmin" layoutX="4.0" layoutY="598.0" mnemonicParsing="false" onAction="#onClickShowLog" prefHeight="48.0" prefWidth="278.0" styleClass="adminLogButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Show Log" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -240,7 +240,7 @@
                            </font>
                         </Label>
                      </children></Pane>
-                  <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="menuPane" fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Text layoutX="320.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dishes">
                            <font>
@@ -252,29 +252,40 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <ImageView id="refreshButtonMenuAdmin" fx:id="refreshButtonMenuAdmin" layoutX="1112.0" layoutY="14.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/arrows-rotate.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView id="editButtonMenuAdmin" fx:id="editButtonMenuAdmin" layoutX="562.0" layoutY="333.0" styleClass="iconButtonsA">
+                        <ImageView id="editButtonMenuAdmin" fx:id="editDishMenuAdmin" layoutX="536.0" layoutY="239.0" onMouseClicked="#editDishMenu" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/Edit.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="deleteButtonMenuAdmin" fx:id="deleteButtonMenuAdmin" layoutX="566.0" layoutY="412.0" styleClass="iconButtonsA">
+                        <ImageView id="deleteButtonMenuAdmin" fx:id="deleteDishMenuAdmin" layoutX="540.0" layoutY="296.0" onMouseClicked="#deleteDish" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/trash.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="addMenuAdmin" fx:id="addMenuAdmin" layoutX="566.0" layoutY="264.0" styleClass="iconButtonsA">
+                        <ImageView id="addMenuAdmin" fx:id="addDishMenuAdmin" layoutX="539.0" layoutY="195.0" onMouseClicked="#addDishMenu" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/add.png" />
                            </image>
                         </ImageView>
                         <ListView id="dishesListMenuAdmin" fx:id="dishesListMenuAdmin" layoutX="174.0" layoutY="195.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
                         <ListView id="drinksListMenuAdmin" fx:id="drinksListMenuAdmin" layoutX="632.0" layoutY="195.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
-                     </children></Pane>
+                        <ImageView id="editButtonMenuAdmin" fx:id="editDrinkMenuAdmin1" layoutX="994.0" layoutY="239.0" onMouseClicked="#editDrinkMenu" styleClass="iconButtonsA">
+                           <image>
+                              <Image url="@../../../Images/Edit.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="deleteButtonMenuAdmin" fx:id="deleteDrinkMenuAdmin1" layoutX="998.0" layoutY="296.0" onMouseClicked="#deleteDrink" styleClass="iconButtonsA">
+                           <image>
+                              <Image url="@../../../Images/trash.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="addMenuAdmin" fx:id="addDrinkMenuAdmin1" layoutX="997.0" layoutY="194.0" onMouseClicked="#addDrinkMenu" styleClass="iconButtonsA">
+                           <image>
+                              <Image url="@../../../Images/add.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                   <Pane id="tablesPane" fx:id="tablesPane" disable="true" prefHeight="741.0" prefWidth="1161.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Text id="availableTablesTxt" layoutX="282.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Tables">
@@ -287,24 +298,14 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <ListView id="availableTablesListAdmin" fx:id="availableTablesListAdmin" layoutX="186.0" layoutY="205.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
-                        <ListView id="reservedTablesListAdmin" fx:id="reservedTablesListAdmin" layoutX="624.0" layoutY="205.0" prefHeight="471.0" prefWidth="362.0" style="-fx-background-color: #ffffff;" />
-                        <ImageView id="refreshButtonTablesAdmin" fx:id="refreshButtonTablesAdmin" layoutX="1112.0" layoutY="14.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/arrows-rotate.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView id="editButtonTablesAdmin" fx:id="editButtonTablesAdmin" fitHeight="40.0" fitWidth="40.0" layoutX="563.0" layoutY="383.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/rightleft.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView id="deleteButtonTablesAdmin" fx:id="deleteButtonTablesAdmin" layoutX="566.0" layoutY="452.0" styleClass="iconButtonsA">
+                        <ListView id="availableTablesListAdmin" fx:id="availableTablesListAdmin" layoutX="266.0" layoutY="205.0" prefHeight="471.0" prefWidth="210.0" style="-fx-background-color: #ffffff;" />
+                        <ListView id="reservedTablesListAdmin" fx:id="reservedTablesListAdmin" layoutX="693.0" layoutY="205.0" prefHeight="471.0" prefWidth="229.0" style="-fx-background-color: #ffffff;" />
+                        <ImageView id="deleteButtonTablesAdmin" fx:id="deleteButtonTablesAdmin" layoutX="477.0" layoutY="261.0" onMouseClicked="#deleteTable" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/trash.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="addTables" fx:id="addTablesAdmin" layoutX="566.0" layoutY="313.0" styleClass="iconButtonsA">
+                        <ImageView id="addTables" fx:id="addTablesAdmin" layoutX="476.0" layoutY="205.0" onMouseClicked="#addTable" styleClass="iconButtonsA">
                            <image>
                               <Image url="@../../../Images/add.png" />
                            </image>
@@ -359,7 +360,7 @@
                            </font>
                         </Text>
                         <ListView id="DropdownListOrdersAdmin" fx:id="DropdownListOrdersAdmin" layoutX="21.0" layoutY="152.0" prefHeight="497.0" prefWidth="471.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../Styles/CssUncleHenry.css" />
-                        <Button id="completedButtonAdminStyle" fx:id="completedButtonAdmin" layoutX="818.0" layoutY="657.0" mnemonicParsing="false" onAction="#addDish" prefHeight="51.0" prefWidth="170.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Completed" textFill="WHITE">
+                        <Button id="completedButtonAdminStyle" fx:id="completedButtonAdmin" disable="true" layoutX="818.0" layoutY="657.0" mnemonicParsing="false" onAction="#completedOrder" prefHeight="51.0" prefWidth="170.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Completed" textFill="WHITE" visible="false">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -368,7 +369,7 @@
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></Pane>
-                  <Pane fx:id="logPaneAdmin" disable="true" prefHeight="200.0" prefWidth="200.0" visible="false">
+                  <Pane fx:id="logPaneAdmin" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d9d9d9;" visible="false">
                      <children>
                         <ListView fx:id="logListAdmin" layoutX="90.0" layoutY="83.0" prefHeight="581.0" prefWidth="972.0" />
                      </children>

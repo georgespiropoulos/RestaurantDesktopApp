@@ -199,7 +199,7 @@
                            </font>
                         </Button>
                         <ListView id="DropdownListOrdersEmployee" fx:id="DropdownListOrdersEmployee1" layoutX="20.0" layoutY="163.0" prefHeight="497.0" prefWidth="480.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../Styles/CssUncleHenry.css" />
-                        <Button id="completedButtonEmployeeStyle" fx:id="completedButtonEmployee" layoutX="833.0" layoutY="658.0" mnemonicParsing="false" onAction="#addDish" prefHeight="51.0" prefWidth="175.0" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Completed" textFill="WHITE">
+                        <Button id="completedButtonEmployeeStyle" fx:id="completedButtonEmployee" layoutX="833.0" layoutY="658.0" mnemonicParsing="false" onAction="#completedOrder" prefHeight="51.0" prefWidth="175.0" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Completed" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -232,8 +232,8 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <ListView id="availableTablesEmployee" fx:id="availableTablesEmployee" layoutX="82.0" layoutY="218.0" prefHeight="473.0" prefWidth="448.0" stylesheets="@../../../Styles/CssUncleHenry.css" />
-                        <ListView id="reservedTablesEmployee" fx:id="reservedTablesEmployee" layoutX="589.0" layoutY="218.0" prefHeight="473.0" prefWidth="448.0" stylesheets="@../../../Styles/CssUncleHenry.css" />
+                        <ListView id="availableTablesEmployee" fx:id="availableTablesEmployee" layoutX="183.0" layoutY="218.0" prefHeight="473.0" prefWidth="262.0" stylesheets="@../../../Styles/CssUncleHenry.css" />
+                        <ListView id="reservedTablesEmployee" fx:id="reservedTablesEmployee" layoutX="684.0" layoutY="218.0" prefHeight="473.0" prefWidth="262.0" stylesheets="@../../../Styles/CssUncleHenry.css" />
                      </children>
                   </Pane>
                </children>

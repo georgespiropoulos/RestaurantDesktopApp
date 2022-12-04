@@ -103,7 +103,7 @@ public class DBUtils {
             while(rs.next()) {
                 int id = rs.getInt(1);
                 int tableid = rs.getInt(2);
-                int status = rs.getInt(3);
+                int status = rs.getInt(4);
                 Order order = new Order(id, tableid, status);
                 return order;
             }
@@ -169,6 +169,19 @@ public class DBUtils {
         }
     }
 
+    public static void updateOrderStatus(int orderid) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.ORDERUPDATESTATUS("+orderid+","+1+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+
     public static void updateUserRole(boolean role, int userid) throws Exception{
         try{
             statement = conn.createStatement();
@@ -196,6 +209,19 @@ public class DBUtils {
         }
     }
 
+    public static void freeTable(int tableid) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.SETRESERVEDTABLE("+tableid+",false)");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+
     public static void insertUser(String name, String surname, String uname, String pass, boolean admin) throws Exception{
         try{
             statement = conn.createStatement();
@@ -214,6 +240,58 @@ public class DBUtils {
         try{
             statement = conn.createStatement();
             rs = statement.executeQuery("SELECT * FROM TBD.ORDERINSERT("+tableid+","+0+","+0+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(1);
+            throw e;
+        }
+    }
+
+    public static void insertDish(String name, String desc, float price, boolean avail) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.INSERTDISH('"+name+"','"+desc+"',"+price+","+avail+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(1);
+            throw e;
+        }
+    }
+
+    public static void insertDrink(String name, String desc, float price, boolean avail) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.INSERTDRINK('"+name+"','"+desc+"',"+price+","+avail+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(1);
+            throw e;
+        }
+    }
+
+    public static void updateDish(String name, String desc, float price, boolean avail, int id) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.UPDATEDISH('"+name+"','"+desc+"',"+price+","+avail+","+id+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(1);
+            throw e;
+        }
+    }
+
+    public static void updateDrink(String name, String desc, float price, boolean avail, int id) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.UPDATEDRINK('"+name+"','"+desc+"',"+price+","+avail+","+id+")");
             while (rs.next()){
                 System.out.println(rs.getString(1));
             }
@@ -397,6 +475,165 @@ public class DBUtils {
             throw e;
         }
     }
+
+    public static int[] getNotAvailableTables() throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.GETNOTAVAILABLETABLES()");
+            int i = 0;
+            int size=0;
+            while (rs.next()) {
+                size++;
+            }
+            int[] tables = new int[size];
+            rs = statement.executeQuery("SELECT * FROM TBD.GETNOTAVAILABLETABLES()");
+            while(rs.next()) {
+                tables[i] = rs.getInt(1);
+                i++;
+            }
+            return tables;
+        }catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+
+    public static void addTable() throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.ADDTABLE(false)");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(1);
+            throw e;
+        }
+    }
+
+    public static void deleteTable(int tableid) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.DELETETABLE("+tableid+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(1);
+            throw e;
+        }
+    }
+
+    public static void deleteDish(int dishid) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.DELETEDISH("+dishid+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(1);
+            throw e;
+        }
+    }
+
+    public static void deleteDrink(int drinkid) throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.DELETEDRINK("+drinkid+")");
+            while (rs.next()){
+                System.out.println(rs.getString(1));
+            }
+        }catch (Exception e){
+            System.out.println(1);
+            throw e;
+        }
+    }
+
+    public static String[] showLog() throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM LOGGING.SHOWLOG()");
+            int i = 0;
+            int size=0;
+            while (rs.next()) {
+                size++;
+            }
+            String[] lines = new String[size];
+            rs = statement.executeQuery("SELECT * FROM LOGGING.SHOWLOG()");
+            while(rs.next()) {
+                String time = rs.getString(2);
+                String table = rs.getString(4);
+                String operation = rs.getString(5);
+                String who = rs.getString(6);
+                String oldV = rs.getString(7);
+                String newV = rs.getString(8);
+                String line = time+" "+table+" "+operation+" "+who+" "+oldV+" "+newV;
+                lines[i] = line;
+                i++;
+            }
+            return lines;
+        }catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+
+    public static Dish[] getDishes() throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.GETDISHES()");
+            int i = 0;
+            int size=0;
+            while (rs.next()) {
+                size++;
+            }
+            Dish[] dishes = new Dish[size];
+            rs = statement.executeQuery("SELECT * FROM TBD.GETDISHES()");
+            while(rs.next()) {
+                int dishid = rs.getInt("dishid");
+                String dishname = rs.getString("dishname");
+                float price = rs.getFloat("price");
+                String dishdescription = rs.getString("dishdescription");
+                Boolean dishavailability = rs.getBoolean("dishavailability");
+                dishes[i] = new Dish(dishid, dishname, price, dishdescription, dishavailability);
+                i++;
+            }
+            return dishes;
+        }catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+
+    public static Drink[] getDrinks() throws Exception{
+        try{
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM TBD.GETDRINKS()");
+            int i = 0;
+            int size=0;
+            while (rs.next()) {
+                size++;
+            }
+            Drink[] drinks = new Drink[size];
+            rs = statement.executeQuery("SELECT * FROM TBD.GETDRINKS()");
+            while(rs.next()) {
+                int drinkid = rs.getInt("drinkid");
+                String drinkname = rs.getString("drinkname");
+                float price = rs.getFloat("price");
+                String drinkdescription = rs.getString("drinkdescription");
+                Boolean drinkavailability = rs.getBoolean("drinkavailability");
+                drinks[i] = new Drink(drinkid, drinkname, price, drinkdescription, drinkavailability);
+                i++;
+            }
+            return drinks;
+        }catch (Exception e){
+            System.out.println(e);
+            throw e;
+        }
+    }
+
+
 
     public static Dish[] getOrderDishes(int orderid) throws Exception{
         try{
