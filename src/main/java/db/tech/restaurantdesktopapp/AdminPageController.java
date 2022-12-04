@@ -33,10 +33,10 @@ public class AdminPageController implements Initializable{
             orderIDTxtAdmin, tableNoTxtAdmin, ordersSummaryTxtAdmin;
 
     @FXML
-    private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA, reservationsMenuA;
+    private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA;
 
     @FXML
-    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, reservationsPane;
+    private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane;
 
     @FXML
     private ComboBox dropdownEmployees, dropdownOrdersAdmin;
@@ -373,8 +373,6 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
-        reservationsPane.setVisible(false);
-        reservationsPane.setDisable(true);
         profileMenuA.setDisable(true);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -385,8 +383,6 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(false);
         tablesMenuA.setVisible(true);
-        reservationsMenuA.setDisable(false);
-        reservationsMenuA.setVisible(true);
     }
 
     public void onClickEmployees(){
@@ -400,8 +396,6 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
-        reservationsPane.setVisible(false);
-        reservationsPane.setDisable(true);
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(true);
@@ -412,8 +406,6 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(false);
         tablesMenuA.setVisible(true);
-        reservationsMenuA.setDisable(false);
-        reservationsMenuA.setVisible(true);
         setEmployeesTab();
     }
 
@@ -428,8 +420,6 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(true);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
-        reservationsPane.setVisible(false);
-        reservationsPane.setDisable(true);
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -440,8 +430,6 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(false);
         tablesMenuA.setVisible(true);
-        reservationsMenuA.setDisable(false);
-        reservationsMenuA.setVisible(true);
         setOrdersTab();
     }
 
@@ -456,8 +444,6 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(false);
         tablesPane.setVisible(false);
         tablesPane.setDisable(true);
-        reservationsPane.setVisible(false);
-        reservationsPane.setDisable(true);
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -468,8 +454,6 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(false);
         tablesMenuA.setVisible(true);
-        reservationsMenuA.setDisable(false);
-        reservationsMenuA.setVisible(true);
     }
 
     public void onClickTables(){
@@ -483,8 +467,6 @@ public class AdminPageController implements Initializable{
         menuPane.setDisable(true);
         tablesPane.setVisible(true);
         tablesPane.setDisable(false);
-        reservationsPane.setVisible(false);
-        reservationsPane.setDisable(true);
         profileMenuA.setDisable(false);
         profileMenuA.setVisible(true);
         employeesMenuA.setDisable(false);
@@ -495,35 +477,6 @@ public class AdminPageController implements Initializable{
         mainMenuA.setVisible(true);
         tablesMenuA.setDisable(true);
         tablesMenuA.setVisible(true);
-        reservationsMenuA.setDisable(false);
-        reservationsMenuA.setVisible(true);
-    }
-
-    public void onClickReservations(){
-        profilePane.setVisible(false);
-        profilePane.setDisable(true);
-        employeesPane.setVisible(false);
-        employeesPane.setDisable(true);
-        ordersPane.setVisible(false);
-        ordersPane.setDisable(true);
-        menuPane.setVisible(false);
-        menuPane.setDisable(true);
-        tablesPane.setVisible(false);
-        tablesPane.setDisable(true);
-        reservationsPane.setVisible(true);
-        reservationsPane.setDisable(false);
-        profileMenuA.setDisable(false);
-        profileMenuA.setVisible(true);
-        employeesMenuA.setDisable(false);
-        employeesMenuA.setVisible(true);
-        ordersMenuA.setDisable(false);
-        ordersMenuA.setVisible(true);
-        mainMenuA.setDisable(false);
-        mainMenuA.setVisible(true);
-        tablesMenuA.setDisable(false);
-        tablesMenuA.setVisible(true);
-        reservationsMenuA.setDisable(true);
-        reservationsMenuA.setVisible(true);
     }
 
     public void onClickLogout(){
