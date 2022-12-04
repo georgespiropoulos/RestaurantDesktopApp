@@ -3,12 +3,13 @@ package db.tech.restaurantdesktopapp;
 import java.net.URL;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,15 +23,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import javafx.scene.control.Label;
 
 public class AdminPageController implements Initializable{
 
     @FXML
     private Label day, date, time, idTxtAdmin, nameTxtAdmin, surnameTxtAdmin, usernameTxtAdmin, PasswordTxtAdmin,
-            idTxtAdmin1, nameTxtAdmin1, surnameTxtAdmin1, usernameTxtAdmin1, PasswordTxtAdmin1, isAdmin;
+            idTxtAdmin1, nameTxtAdmin1, surnameTxtAdmin1, usernameTxtAdmin1, PasswordTxtAdmin1, isAdmin,
+            orderIDTxtAdmin, tableNoTxtAdmin, ordersSummaryTxtAdmin;
 
     @FXML
     private Button logoutAdmin, profileMenuA,employeesMenuA, ordersMenuA, mainMenuA, tablesMenuA, reservationsMenuA;
@@ -39,7 +39,10 @@ public class AdminPageController implements Initializable{
     private Pane profilePane, employeesPane, ordersPane, menuPane, tablesPane, reservationsPane;
 
     @FXML
-    private ComboBox dropdownEmployees;
+    private ComboBox dropdownEmployees, dropdownOrdersAdmin;
+
+    @FXML
+    private ListView DropdownListOrdersAdmin;
 
 
     private User user = new User();
@@ -123,6 +126,120 @@ public class AdminPageController implements Initializable{
         }
     }
 
+    public void setOrdersTab(){
+        try {
+            String[] orders;
+            System.out.println("Loaded");
+            orders = DBUtils.getOrders();
+            dropdownOrdersAdmin.setItems(FXCollections.observableArrayList(orders));
+            dropdownOrdersAdmin.setPromptText("Select Order ID");
+            EventHandler<ActionEvent> click =
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            try {
+                                String selected;
+                                selected = dropdownOrdersAdmin.getValue().toString();
+                                Order selectedOrder = DBUtils.getOrderDetails(Integer.parseInt(selected));
+                                System.out.println("clicked");
+                                setOrderDetails(selectedOrder);
+                            }catch (Exception e){}
+                        }
+                    };
+            dropdownOrdersAdmin.setOnAction(click);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void setOrderDetails(Order order){
+        try {
+            order.setDishes(DBUtils.getOrderDishes(order.getOrderid()));
+            order.setDrinks(DBUtils.getOrderDrinks(order.getOrderid()));
+            orderIDTxtAdmin.setText(Integer.toString(order.getOrderid()));
+            tableNoTxtAdmin.setText(Integer.toString(order.getTableid()));
+            ordersSummaryTxtAdmin.setText(String.format("%.2f €",order.getBill()));
+            ObservableList<String> list = FXCollections.observableArrayList();
+            for (int i = 0; i < order.getDishes().length; i++){
+                String line = String.format("%-4.4s x\t %-30.30s\t %-5.5s €",DBUtils.timesBoughtDish(order.getDishes()[i].getDishid()
+                        , order.getOrderid()), order.getDishes()[i].getDishname(), order.getDishes()[i].getPrice());
+                list.add(line);
+            }
+            for (int i = 0; i < order.getDrinks().length; i++){
+                String line = String.format("%-4.4s x\t %-30.30s\t %-5.5s €",DBUtils.timesBoughtDrink(order.getDrinks()[i].getDrinkid()
+                        , order.getOrderid()), order.getDrinks()[i].getDrinkname(), order.getDrinks()[i].getPrice());
+                list.add(line);
+            }
+            DropdownListOrdersAdmin.setItems(list);
+        }catch (Exception e){}
+    }
+
+    public void addDrink(){
+        try {
+            if (orderIDTxtAdmin.getText() != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ordersPopUp.fxml"));
+                Parent root = loader.load();
+                OrdersPopUpController controller = (OrdersPopUpController) loader.getController();
+                controller.mode = 1;
+                controller.orderid = Integer.parseInt(orderIDTxtAdmin.getText());
+                ObservableList<String> drinks;
+                drinks = DBUtils.getAvailableDrinks();
+                controller.ordersPopUpList.setItems(drinks);
+                controller.ordersPopUpList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setTitle("Add Drinks");
+                stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+                stage.showAndWait();
+                if (controller.selectedDrinks != null) {
+                    Order order = DBUtils.getOrderDetails(controller.orderid);
+                    setOrderDetails(order);
+                    String[] orders;
+                    orders = DBUtils.getOrders();
+                    dropdownOrdersAdmin.setItems(FXCollections.observableArrayList(orders));
+                    dropdownOrdersAdmin.setPromptText("Select Order ID");
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void addDish(){
+        try {
+            if (orderIDTxtAdmin.getText() != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ordersPopUp.fxml"));
+                Parent root = loader.load();
+                OrdersPopUpController controller = (OrdersPopUpController) loader.getController();
+                controller.mode = 2;
+                controller.orderid = Integer.parseInt(orderIDTxtAdmin.getText());
+                ObservableList<String> dishes;
+                dishes = DBUtils.getAvailableDishes();
+                controller.ordersPopUpList.setItems(dishes);
+                controller.ordersPopUpList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setTitle("Add Drinks");
+                stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+                stage.showAndWait();
+                if (controller.selectedDishes != null) {
+                    Order order = DBUtils.getOrderDetails(controller.orderid);
+                    setOrderDetails(order);
+                    String[] orders;
+                    orders = DBUtils.getOrders();
+                    dropdownOrdersAdmin.setItems(FXCollections.observableArrayList(orders));
+                    dropdownOrdersAdmin.setPromptText("Select Order ID");
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
     public void editEmployee(){
         try {
             if (usernameTxtAdmin1 != null) {
@@ -149,6 +266,23 @@ public class AdminPageController implements Initializable{
                     dropdownEmployees.setPromptText("Select");
                 }
             }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void newOrder(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewOrderPopUp.fxml"));
+            Parent root = loader.load();
+            NewOrderPopUpController controller = (NewOrderPopUpController) loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("New Order");
+            stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
+            stage.showAndWait();
         }catch (Exception e){
             System.out.println(e);
         }
@@ -274,6 +408,7 @@ public class AdminPageController implements Initializable{
         tablesMenuA.setVisible(true);
         reservationsMenuA.setDisable(false);
         reservationsMenuA.setVisible(true);
+        setOrdersTab();
     }
 
     public void onClickMenu(){

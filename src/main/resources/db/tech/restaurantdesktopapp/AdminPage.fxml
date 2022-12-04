@@ -104,7 +104,7 @@
          <children>
             <StackPane layoutX="-8.0" prefHeight="745.0" prefWidth="1164.0">
                <children>
-                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <ImageView id="editButtonProfileAdmin" fx:id="editButtonProfile" layoutX="1098.0" layoutY="14.0" onMouseClicked="#profileUpdate" styleClass="iconButtonsA">
                            <image>
@@ -339,24 +339,19 @@
                         </ImageView>
                         <ListView id="dropdownListReservationsAdmin" fx:id="dropdownListReservationsAdmin" layoutX="306.0" layoutY="125.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
                      </children></Pane>
-                  <Pane id="ordersPane" fx:id="ordersPane" disable="true" prefHeight="745.0" prefWidth="1381.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                  <Pane id="ordersPane" fx:id="ordersPane" prefHeight="745.0" prefWidth="1381.0" style="-fx-background-color: #D9D9D9;">
                      <children>
-                        <ImageView id="refreshButtonOrdersAdmin" fx:id="refreshButtonOrdersAdmin" layoutX="1106.0" layoutY="14.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/arrows-rotate.png" />
-                           </image>
-                        </ImageView>
-                        <Button id="NewOrderButtonAdmin" fx:id="NewOrderButtonAdmin" layoutX="818.0" layoutY="144.0" mnemonicParsing="false" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="New Order" textFill="WHITE">
+                        <Button id="NewOrderButtonAdmin" fx:id="NewOrderButtonAdmin" layoutX="818.0" layoutY="144.0" mnemonicParsing="false" onAction="#newOrder" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="New Order" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <Button id="AddDrinkButtonAdmin" fx:id="AddDrinkButtonAdmin" layoutX="818.0" layoutY="204.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Drink" textFill="WHITE">
+                        <Button id="AddDrinkButtonAdmin" fx:id="AddDrinkButtonAdmin" layoutX="818.0" layoutY="204.0" mnemonicParsing="false" onAction="#addDrink" prefHeight="51.0" prefWidth="148.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Drink" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <Button id="AddDishButtonAdmin" fx:id="AddDishButtonAdmin" layoutX="818.0" layoutY="263.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Dish" textFill="WHITE">
+                        <Button id="AddDishButtonAdmin" fx:id="AddDishButtonAdmin" layoutX="818.0" layoutY="263.0" mnemonicParsing="false" onAction="#addDish" prefHeight="51.0" prefWidth="148.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Dish" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -381,7 +376,7 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <Label id="ordersSummaryTxtAdmin" fx:id="ordersSummaryTxtAdmin" layoutX="974.0" layoutY="670.0" text="Label">
+                        <Label id="ordersSummaryTxtAdmin" fx:id="ordersSummaryTxtAdmin" layoutX="974.0" layoutY="671.0" text="Label">
                            <font>
                               <Font size="24.0" />
                            </font>

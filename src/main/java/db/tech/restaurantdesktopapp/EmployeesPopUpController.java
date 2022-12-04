@@ -58,7 +58,6 @@ public class EmployeesPopUpController {
     }
 
     public void cancel(){
-        System.out.println(mode);
         Stage stage = (Stage) employeesPopUpCancelAdmin.getScene().getWindow();
         stage.close();
     }
