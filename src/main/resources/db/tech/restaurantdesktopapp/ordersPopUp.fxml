@@ -4,19 +4,35 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.tech.restaurantdesktopapp.EmployeePageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.tech.restaurantdesktopapp.OrdersPopUpController">
    <children>
-      <Button fx:id="ordersPopUpAdd" layoutX="141.0" layoutY="435.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" styleClass="popUpApplyButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add" textFill="WHITE">
+      <Button fx:id="ordersPopUpAdd" layoutX="141.0" layoutY="435.0" mnemonicParsing="false" onAction="#apply" prefHeight="48.0" prefWidth="126.0" styleClass="popUpApplyButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="ordersPopUpCancel" layoutX="332.0" layoutY="435.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" styleClass="popUpCancelButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Cancel" textFill="WHITE">
+      <Button fx:id="ordersPopUpCancel" layoutX="332.0" layoutY="435.0" mnemonicParsing="false" onAction="#cancel" prefHeight="48.0" prefWidth="126.0" styleClass="popUpCancelButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Cancel" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <ListView fx:id="ordersPopUpList" layoutX="51.0" layoutY="37.0" prefHeight="364.0" prefWidth="508.0" />
+      <ListView fx:id="ordersPopUpList" layoutX="78.0" layoutY="71.0" prefHeight="342.0" prefWidth="455.0" />
+      <Text id="orderIDAdmin" fx:id="orderIDAdmin" layoutX="78.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text id="orderIDAdmin" fx:id="orderIDAdmin1" layoutX="140.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text id="orderIDAdmin" fx:id="orderIDAdmin11" layoutX="295.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
