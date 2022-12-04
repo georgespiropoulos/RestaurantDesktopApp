@@ -82,11 +82,6 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="reservationsMenuAdmin" fx:id="reservationsMenuA" layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#onClickReservations" prefHeight="47.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Reservations" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
             <Button id="logoutAdmin" fx:id="logoutAdmin" layoutX="4.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickLogout" prefHeight="48.0" prefWidth="278.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Sign Out" textFill="WHITE">
                <font>
                   <Font size="24.0" />
@@ -104,7 +99,7 @@
          <children>
             <StackPane layoutX="-8.0" prefHeight="745.0" prefWidth="1164.0">
                <children>
-                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
+                  <Pane id="profilePane" fx:id="profilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;">
                      <children>
                         <ImageView id="editButtonProfileAdmin" fx:id="editButtonProfile" layoutX="1098.0" layoutY="14.0" onMouseClicked="#profileUpdate" styleClass="iconButtonsA">
                            <image>
@@ -315,31 +310,7 @@
                            </image>
                         </ImageView>
                      </children></Pane>
-                  <Pane id="reservationsPane" fx:id="reservationsPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
-                     <children>
-                        <ImageView id="refreshButtonReservationsAdmin" fx:id="refreshButtonReservationsAdmin" layoutX="1112.0" layoutY="14.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/arrows-rotate.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView id="editButtonReservationsAdmin" fx:id="editButtonReservationsAdmin" layoutX="833.0" layoutY="304.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/Edit.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView id="deleteButtonReservationsAdmin" fx:id="deleteButtonReservationsAdmin" layoutX="837.0" layoutY="381.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/trash.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView id="addReservationsAdmin" fx:id="addReservationsAdmin" layoutX="837.0" layoutY="239.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/add.png" />
-                           </image>
-                        </ImageView>
-                        <ListView id="dropdownListReservationsAdmin" fx:id="dropdownListReservationsAdmin" layoutX="306.0" layoutY="125.0" prefHeight="471.0" prefWidth="511.0" style="-fx-background-color: #ffffff;" />
-                     </children></Pane>
-                  <Pane id="ordersPane" fx:id="ordersPane" prefHeight="745.0" prefWidth="1381.0" style="-fx-background-color: #D9D9D9;">
+                  <Pane id="ordersPane" fx:id="ordersPane" disable="true" prefHeight="745.0" prefWidth="1381.0" style="-fx-background-color: #D9D9D9;" visible="false">
                      <children>
                         <Button id="NewOrderButtonAdmin" fx:id="NewOrderButtonAdmin" layoutX="818.0" layoutY="144.0" mnemonicParsing="false" onAction="#newOrder" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="New Order" textFill="WHITE">
                            <font>
@@ -397,63 +368,9 @@
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></Pane>
-                  <Pane id="ordersPane" fx:id="ordersPane1" prefHeight="745.0" prefWidth="1381.0" style="-fx-background-color: #D9D9D9;" visible="false">
-                     <children>
-                        <Button id="NewOrderButtonAdmin" fx:id="NewOrderButtonAdmin1" layoutX="818.0" layoutY="144.0" mnemonicParsing="false" onAction="#newOrder" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="New Order" textFill="WHITE">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
-                        <Button id="AddDrinkButtonAdmin" fx:id="AddDrinkButtonAdmin1" layoutX="818.0" layoutY="204.0" mnemonicParsing="false" onAction="#addDrink" prefHeight="51.0" prefWidth="148.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Drink" textFill="WHITE">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
-                        <Button id="AddDishButtonAdmin" fx:id="AddDishButtonAdmin1" layoutX="818.0" layoutY="263.0" mnemonicParsing="false" onAction="#addDish" prefHeight="51.0" prefWidth="148.0" styleClass="adminButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Dish" textFill="WHITE">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
-                        <Text id="orderIDAdmin" fx:id="orderIDAdmin1" layoutX="869.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order ID:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Label id="orderIDTxtAdmin" fx:id="orderIDTxtAdmin1" layoutX="974.0" layoutY="582.0" text="Label">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label id="tableNoTxtAdmin" fx:id="tableNoTxtAdmin1" layoutX="974.0" layoutY="624.0" text="Label">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Text id="ordersSummaryAdmin" fx:id="ordersSummaryAdmin1" layoutX="864.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Label id="ordersSummaryTxtAdmin" fx:id="ordersSummaryTxtAdmin1" layoutX="974.0" layoutY="671.0" text="Label">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <ComboBox id="dropdownOrdersAdmin" fx:id="dropdownOrdersAdmin1" layoutX="21.0" layoutY="100.0" prefHeight="44.0" prefWidth="471.0" styleClass="dropdownAdmin" stylesheets="@../../../Styles/CssUncleHenry.css" />
-                        <Text id="tableNoAdmin" fx:id="tableNoAdmin1" layoutX="866.0" layoutY="651.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table No:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <ListView id="DropdownListOrdersAdmin" fx:id="DropdownListOrdersAdmin1" layoutX="21.0" layoutY="152.0" prefHeight="497.0" prefWidth="471.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../Styles/CssUncleHenry.css" />
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Pane>
                   <Pane disable="true" prefHeight="200.0" prefWidth="200.0" visible="false">
                      <children>
-                        <ListView layoutX="12.0" layoutY="8.0" prefHeight="729.0" prefWidth="1144.0" />
+                        <ListView fx:id="showLogAdmin" layoutX="12.0" layoutY="8.0" prefHeight="729.0" prefWidth="1144.0" />
                      </children>
                   </Pane>
                </children>
