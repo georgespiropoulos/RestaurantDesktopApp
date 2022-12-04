@@ -183,26 +183,21 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <Button id="AddDishButtonEmployee" fx:id="AddDishButtonEmployee1" layoutX="833.0" layoutY="269.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Dish" textFill="WHITE">
+                        <Button id="AddDishButtonEmployee" fx:id="AddDishButtonEmployee1" layoutX="833.0" layoutY="269.0" mnemonicParsing="false" onAction="#addDish" prefHeight="51.0" prefWidth="148.0" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Dish" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <Button id="AddDrinkButtonEmployee" fx:id="AddDrinkButtonEmployee1" layoutX="833.0" layoutY="211.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="148.0" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Drink" textFill="WHITE">
+                        <Button id="AddDrinkButtonEmployee" fx:id="AddDrinkButtonEmployee1" layoutX="833.0" layoutY="211.0" mnemonicParsing="false" onAction="#addDrink" prefHeight="51.0" prefWidth="148.0" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="Add Drink" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <Button id="NewOrderButtonEmployee" fx:id="NewOrderButtonEmployee1" layoutX="833.0" layoutY="152.0" mnemonicParsing="false" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="New Order" textFill="WHITE">
+                        <Button id="NewOrderButtonEmployee" fx:id="NewOrderButtonEmployee1" layoutX="833.0" layoutY="152.0" mnemonicParsing="false" onAction="#newOrder" styleClass="EmployeeButtons" stylesheets="@../../../Styles/CssUncleHenry.css" text="New Order" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <ImageView id="refreshButtonOrdersEmployee" fx:id="refreshButtonOrdersEmployee1" layoutX="1106.0" layoutY="16.0" styleClass="iconButtonsA">
-                           <image>
-                              <Image url="@../../../Images/arrows-rotate.png" />
-                           </image>
-                        </ImageView>
                         <ListView id="DropdownListOrdersEmployee" fx:id="DropdownListOrdersEmployee1" layoutX="20.0" layoutY="163.0" prefHeight="497.0" prefWidth="480.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../Styles/CssUncleHenry.css" />
                      </children></Pane>
                   <Pane fx:id="menuPane" disable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" visible="false">
