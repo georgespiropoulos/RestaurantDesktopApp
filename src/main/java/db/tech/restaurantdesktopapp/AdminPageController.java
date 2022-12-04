@@ -129,8 +129,13 @@ public class AdminPageController implements Initializable{
     public void setOrdersTab(){
         try {
             String[] orders;
-            System.out.println("Loaded");
             orders = DBUtils.getOrders();
+            for (int i = 0; i<orders.length; i++){
+                int status = DBUtils.getOrderDetails(Integer.parseInt(orders[i])).getStatus();
+                if (status == 1) {
+                    orders[i] = orders[i] + " [COMPLETED]";
+                }else orders[i] = orders[i] + " [PENDING]";
+            }
             dropdownOrdersAdmin.setItems(FXCollections.observableArrayList(orders));
             dropdownOrdersAdmin.setPromptText("Select Order ID");
             EventHandler<ActionEvent> click =
@@ -140,8 +145,8 @@ public class AdminPageController implements Initializable{
                             try {
                                 String selected;
                                 selected = dropdownOrdersAdmin.getValue().toString();
-                                Order selectedOrder = DBUtils.getOrderDetails(Integer.parseInt(selected));
-                                System.out.println("clicked");
+                                String[] selectedid = selected.split(" ",2);
+                                Order selectedOrder = DBUtils.getOrderDetails(Integer.parseInt(selectedid[0]));
                                 setOrderDetails(selectedOrder);
                             }catch (Exception e){}
                         }
@@ -198,6 +203,12 @@ public class AdminPageController implements Initializable{
                     setOrderDetails(order);
                     String[] orders;
                     orders = DBUtils.getOrders();
+                    for (int i = 0; i<orders.length; i++){
+                        int status = DBUtils.getOrderDetails(Integer.parseInt(orders[i])).getStatus();
+                        if (status == 1) {
+                            orders[i] = orders[i] + " [COMPLETED]";
+                        }else orders[i] = orders[i] + " [PENDING]";
+                    }
                     dropdownOrdersAdmin.setItems(FXCollections.observableArrayList(orders));
                     dropdownOrdersAdmin.setPromptText("Select Order ID");
                 }
@@ -223,7 +234,7 @@ public class AdminPageController implements Initializable{
                 stage.setScene(new Scene(root));
                 stage.setResizable(false);
                 stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setTitle("Add Drinks");
+                stage.setTitle("Add Dishes");
                 stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
                 stage.showAndWait();
                 if (controller.selectedDishes != null) {
@@ -231,6 +242,12 @@ public class AdminPageController implements Initializable{
                     setOrderDetails(order);
                     String[] orders;
                     orders = DBUtils.getOrders();
+                    for (int i = 0; i<orders.length; i++){
+                        int status = DBUtils.getOrderDetails(Integer.parseInt(orders[i])).getStatus();
+                        if (status == 1) {
+                            orders[i] = orders[i] + " [COMPLETED]";
+                        }else orders[i] = orders[i] + " [PENDING]";
+                    }
                     dropdownOrdersAdmin.setItems(FXCollections.observableArrayList(orders));
                     dropdownOrdersAdmin.setPromptText("Select Order ID");
                 }
@@ -273,9 +290,13 @@ public class AdminPageController implements Initializable{
 
     public void newOrder(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewOrderPopUp.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewOrdersPopUp.fxml"));
             Parent root = loader.load();
             NewOrderPopUpController controller = (NewOrderPopUpController) loader.getController();
+            controller.drinks = DBUtils.getAvailableDrinksList();
+            controller.dishes = DBUtils.getAvailableDishesList();
+            controller.tables = DBUtils.getAvailableTables();
+            controller.setTab();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);
@@ -283,6 +304,19 @@ public class AdminPageController implements Initializable{
             stage.setTitle("New Order");
             stage.getIcons().add(new Image(PageLoader.class.getResourceAsStream("/Images/logo.png")));
             stage.showAndWait();
+            if(controller.order != null){
+                setOrderDetails(controller.order);
+                String[] orders;
+                orders = DBUtils.getOrders();
+                for (int i = 0; i<orders.length; i++){
+                    int status = DBUtils.getOrderDetails(Integer.parseInt(orders[i])).getStatus();
+                    if (status == 1) {
+                        orders[i] = orders[i] + " [COMPLETED]";
+                    }else orders[i] = orders[i] + " [PENDING]";
+                }
+                dropdownOrdersAdmin.setItems(FXCollections.observableArrayList(orders));
+                dropdownOrdersAdmin.setPromptText("Select Order ID");
+            }
         }catch (Exception e){
             System.out.println(e);
         }

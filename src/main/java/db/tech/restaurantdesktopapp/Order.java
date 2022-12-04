@@ -5,6 +5,8 @@ public class Order {
     private int tableid;
     private float bill;
 
+    private int status;
+
     private Dish[] dishes;
 
     private Drink[] drinks;
@@ -28,9 +30,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(int orderid, int tableid) {
+    public Order(int orderid, int tableid, int status) {
         this.orderid = orderid;
         this.tableid = tableid;
+        this.status = status;
     }
 
     public int getOrderid() {
@@ -49,6 +52,13 @@ public class Order {
         this.tableid = tableid;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public float getBill() {
         calculateBill();
